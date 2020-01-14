@@ -1,0 +1,2 @@
+# linux-story
+study linux
