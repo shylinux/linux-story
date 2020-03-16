@@ -1,4 +1,5 @@
 # Prerequisites
+.bash_history
 *.d
 
 # Object files
