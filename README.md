@@ -1,3 +1,1 @@
-# linux-story
-
-study linux
+hello ice world
