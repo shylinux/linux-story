@@ -280,6 +280,7 @@ var Index = &ice.Context{Name: "make", Help: "构建命令",
 						})
 					})
 				}
+
 			case "stat":
 				stat := map[string]int{}
 				m.Option("cache.limit", -2)
