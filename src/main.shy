@@ -1,7 +1,23 @@
 title "linux"
+premenu
+
 
 refer "官网" `
 官网 https://www.gnu.org/
 官网 https://www.linux.org/
 源码 https://github.com/torvalds/linux
 `
+
+chapter "进程管理"
+field hostinfo runtime args hostinfo
+field procinfo runtime args procinfo
+
+chapter "磁盘管理"
+field diskinfo runtime args diskinfo
+
+chapter "网络管理"
+field ifconfig runtime args ifconfig
+
+chapter "用户管理"
+field userinfo runtime args userinfo
+
