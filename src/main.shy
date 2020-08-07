@@ -6,6 +6,7 @@ refer "官网" `
 官网 https://www.gnu.org/
 官网 https://www.linux.org/
 源码 https://github.com/torvalds/linux
+教程 http://c.biancheng.net/linux_tutorial/
 `
 
 chapter "进程管理"
