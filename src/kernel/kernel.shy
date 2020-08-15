@@ -1,0 +1,12 @@
+chapter "内核源码"
+
+section "下载"
+refer `
+下载 https://mirrors.tuna.tsinghua.edu.cn/kernel/v3.x/linux-3.10.1.tar.gz
+`
+
+section "体验"
+field "内核源码" web.code.kernel.kernel
+
+field "内核源码" web.code.inner args `[ usr/install/linux-3.10.1/ init/main.c ]`
+

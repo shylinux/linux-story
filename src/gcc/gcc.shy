@@ -1,0 +1,12 @@
+chapter "编译器"
+section "下载"
+spark shell `
+git clone https://mirrors.tuna.tsinghua.edu.cn/git/gcc.git
+`
+
+section "体验"
+field "编译器" web.code.gcc.gcc
+field "编译器" web.code.inner args `[ usr/gcc/ string/string.h ]`
+
+
+

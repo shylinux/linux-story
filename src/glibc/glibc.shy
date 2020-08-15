@@ -1,0 +1,12 @@
+chapter "标准库"
+
+section "下载"
+spark shell `
+git clone https://mirrors.tuna.tsinghua.edu.cn/git/glibc.git
+`
+
+section "体验"
+field "标准库" web.code.glibc.glibc
+field "标准库" web.code.inner args `[ usr/glibc/ string/string.h ]`
+
+
