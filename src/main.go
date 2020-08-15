@@ -6,11 +6,12 @@ import (
 	_ "github.com/shylinux/icebergs/core"
 	_ "github.com/shylinux/icebergs/misc"
 
-	_ "github.com/shylinux/linux-story/cli/file"
-	_ "github.com/shylinux/linux-story/cli/help"
-	_ "github.com/shylinux/linux-story/cli/make"
-	_ "github.com/shylinux/linux-story/cli/text"
-	_ "github.com/shylinux/linux-story/cli/user"
+	_ "github.com/shylinux/linux-story/src/kernel"
+	// _ "github.com/shylinux/linux-story/cli/file"
+	// _ "github.com/shylinux/linux-story/cli/help"
+	// _ "github.com/shylinux/linux-story/cli/make"
+	// _ "github.com/shylinux/linux-story/cli/text"
+	// _ "github.com/shylinux/linux-story/cli/user"
 )
 
 func main() {
