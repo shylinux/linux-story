@@ -1,4 +1,4 @@
-chapter "内核源码"
+chapter "系统内核"
 refer `
 官网 https://www.linux.org/
 源码 https://github.com/torvalds/linux

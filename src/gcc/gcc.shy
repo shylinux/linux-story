@@ -1,12 +1,16 @@
 chapter "编译器"
-section "下载"
-spark shell `
-git clone https://mirrors.tuna.tsinghua.edu.cn/git/gcc.git
+refer `
+官网 https://www.gnu.org/software/gcc/
+源码 https://gcc.gnu.org/git/gcc.git
+文档 https://gcc.gnu.org/onlinedocs/gcc-4.8.5/gcc/
 `
 
 section "体验"
 field "编译器" web.code.gcc.gcc
 field "编译器" web.code.inner args `[ usr/gcc/ string/string.h ]`
 
-
+section "下载"
+spark shell `
+git clone https://mirrors.tuna.tsinghua.edu.cn/git/gcc.git
+`
 
