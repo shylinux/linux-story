@@ -1,49 +1,44 @@
-package kernel
+package busybox
 
 import (
-	"path"
-
 	ice "github.com/shylinux/icebergs"
 	"github.com/shylinux/icebergs/base/cli"
-	"github.com/shylinux/icebergs/base/tcp"
 	"github.com/shylinux/icebergs/core/code"
 	kit "github.com/shylinux/toolkits"
+
+	"path"
+	"runtime"
+	"strings"
 )
 
-const KERNEL = "kernel"
+const BUSYBOX = "busybox"
 
-var Index = &ice.Context{Name: KERNEL, Help: "内核",
+var Index = &ice.Context{Name: BUSYBOX, Help: "busybox",
 	Configs: map[string]*ice.Config{
-		KERNEL: {Name: KERNEL, Help: "内核", Value: kit.Data(
-			"source", "https://mirrors.tuna.tsinghua.edu.cn/kernel/v3.x/linux-3.10.1.tar.gz",
+		BUSYBOX: {Name: BUSYBOX, Help: "busybox", Value: kit.Data(
+			"windows", "https://busybox.net/downloads/busybox-1.32.0.tar.bz2",
+			"darwin", "https://busybox.net/downloads/busybox-1.32.0.tar.bz2",
+			"linux", "https://busybox.net/downloads/busybox-1.32.0.tar.bz2",
 		)},
 	},
 	Commands: map[string]*ice.Command{
 		ice.CTX_INIT: {Hand: func(m *ice.Message, c *ice.Context, cmd string, arg ...string) {}},
 		ice.CTX_EXIT: {Hand: func(m *ice.Message, c *ice.Context, cmd string, arg ...string) {}},
 
-		KERNEL: {Name: "kernel auto 启动:button 编译:button 下载:button", Help: "内核", Action: map[string]*ice.Action{
+		BUSYBOX: {Name: "busybox port=auto auto 启动:button 编译:button 下载:button cmd:textarea", Help: "busybox", Action: map[string]*ice.Action{
 			"download": {Name: "download", Help: "下载", Hand: func(m *ice.Message, arg ...string) {
-				m.Cmdy(code.INSTALL, "download", m.Conf(KERNEL, "meta.source"))
-			}},
-			"prepare": {Name: "prepare", Help: "安装", Hand: func(m *ice.Message, arg ...string) {
-				m.Cmdy(cli.SYSTEM, "yum", "install", "-y", "e4fsprogs")
+				m.Cmdy(code.INSTALL, "download", m.Conf(BUSYBOX, kit.Keys(kit.MDB_META, runtime.GOOS)))
 			}},
 			"compile": {Name: "compile", Help: "编译", Hand: func(m *ice.Message, arg ...string) {
-				name := kit.TrimExt(m.Conf(KERNEL, kit.Keys(kit.MDB_META, "source")))
+				name := path.Base(strings.TrimSuffix(strings.TrimSuffix(m.Conf(BUSYBOX, kit.Keys(kit.MDB_META, runtime.GOOS)), ".tar.bz2"), "zip"))
 				m.Option(cli.CMD_DIR, path.Join(m.Conf(code.INSTALL, kit.META_PATH), name))
 				m.Cmdy(cli.SYSTEM, "make", "defconfig")
 				m.Cmdy(cli.SYSTEM, "make", "-j8")
+				m.Cmdy(cli.SYSTEM, "make", "install")
 			}},
 			"start": {Name: "start", Help: "启动", Hand: func(m *ice.Message, arg ...string) {
-				port := m.Cmdx(tcp.PORT, "select")
-				p := path.Join(m.Conf(cli.DAEMON, kit.META_PATH), port)
-				m.Option(cli.CMD_DIR, p)
-				m.Cmdy(cli.SYSTEM, "dd", "if=/dev/zero", "of=rootfs.img", "bs=1M", "count=100")
-				m.Cmdy(cli.SYSTEM, "mkfs.ext4", "rootfs.img")
 			}},
 		}, Hand: func(m *ice.Message, c *ice.Context, cmd string, arg ...string) {
-			m.Echo("hello kernel world")
 		}},
 	},
 }

@@ -1,0 +1,17 @@
+chapter "busybox"
+refer `
+官网 https://busybox.net/
+`
+
+section "命令体验"
+field "命令行" web.code.busybox.busybox
+field "源代码" web.code.inner args `[ usr/install/linux-3.10.1/ init/main.c ]`
+
+section "编译安装"
+spark shell `
+wget https://busybox.net/downloads/busybox-1.32.0.tar.bz2
+tar xvf busybox-1.32.0.tar.bz2 && cd busybox-1.32.0
+make defconfig
+make -j8 && make install
+`
+

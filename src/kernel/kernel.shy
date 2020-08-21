@@ -1,12 +1,61 @@
 chapter "内核源码"
-
-section "下载"
 refer `
-下载 https://mirrors.tuna.tsinghua.edu.cn/kernel/v3.x/linux-3.10.1.tar.gz
+官网 https://www.linux.org/
+源码 https://github.com/torvalds/linux
+教程 http://c.biancheng.net/linux_tutorial/
+入门 https://blog.csdn.net/weixin_44019745/article/details/102612400
 `
 
 section "体验"
 field "内核源码" web.code.kernel.kernel
-
 field "内核源码" web.code.inner args `[ usr/install/linux-3.10.1/ init/main.c ]`
 
+section "下载"
+spark `
+wget https://mirrors.tuna.tsinghua.edu.cn/kernel/v3.x/linux-3.10.1.tar.gz
+tar xvf linux-3.10.1.tar.gz && cd linux-3.10.1
+make defconfig
+make -j8
+`
+
+spark shell `
+dd if=/dev/zero of=rootfs.img bs=1M count=100
+
+sudo yum install -y e4fsprogs
+sudo mkfs.ext4 rootfs.img
+
+mkdir rootfs
+sudo mount -o loop rootfs.img rootfs
+
+cd rootfs
+sudo rm -rf lost+found
+sudo mkdir -pv {bin,sbin,etc/init.d,proc,sys,usr/{bin,sbin},tmp,dev} 
+sudo cp -drv ~/usr/install/busybox-1.32.0/_install/* .
+`
+
+spark `修改文件etc/inittab，内容如下，`
+spark inner `
+::sysinit:/etc/init.d/rcS
+::respawn:-/bin/sh
+::restart:/sbin/init
+::shutdown:/bin/umount -a -r
+`
+
+spark `修改文件etc/init.d/rcS，内容如下，`
+spark inner `
+#!/bin/sh
+echo "INIT SCRIPT"
+mount -t proc proc /proc
+mount -t sysfs sysfs /sys
+mount -t debugfs debugfs /sys/kernel/debug
+mount -t tmpfs tmpfs /tmp
+mdev -s
+mount -n -o remount,rw /
+echo -e "\nBoot took $(cut -d' ' -f1 /proc/uptime) seconds\n"
+`
+
+spark shell `
+cd ..
+sudo unmount rootfs
+sudo qemu-system-x86_64 -kernel bzImage -hda rootfs.img -append  "console=ttyS0 root=/dev/sda" -nographic -s -S
+`

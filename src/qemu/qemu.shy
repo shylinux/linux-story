@@ -1,0 +1,10 @@
+chapter "虚拟机"
+refer `
+官网 https://www.qemu.org/
+源码 https://github.com/qemu/qemu
+`
+
+section "服务体验"
+field "虚拟机" web.code.qemu.qemu
+field "源代码" web.code.inner args `[ usr/install/qemu qemu-img.c 5395 ]`
+

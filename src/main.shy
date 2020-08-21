@@ -1,11 +1,16 @@
 title "linux"
 premenu
+source kernel/kernel.shy
+return
 
-refer "官网" `
+source busybox/busybox.shy
+source qemu/qemu.shy
+return
+source gcc/gcc.shy
+source gdb/gdb.shy
+source glibc/glibc.shy
+refer `
 官网 https://www.gnu.org/
-官网 https://www.linux.org/
-源码 https://github.com/torvalds/linux
-教程 http://c.biancheng.net/linux_tutorial/
 `
 
 chapter "进程管理"
@@ -27,8 +32,4 @@ refer `
 后台 https://homenew.console.aliyun.com/
 终端 https://ecs-workbench.aliyun.com/
 `
-
-source gcc/gcc.shy
-source glibc/glibc.shy
-source kernel/kernel.shy
 
