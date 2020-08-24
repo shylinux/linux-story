@@ -1,4 +1,4 @@
-chapter "系统内核"
+chapter "内核源码"
 refer `
 官网 https://www.linux.org/
 源码 https://github.com/torvalds/linux
@@ -57,5 +57,5 @@ echo -e "\nBoot took $(cut -d' ' -f1 /proc/uptime) seconds\n"
 spark shell `
 cd ..
 sudo unmount rootfs
-sudo qemu-system-x86_64 -kernel bzImage -hda rootfs.img -append  "console=ttyS0 root=/dev/sda" -nographic -s -S
+sudo qemu-system-x86_64 -kernel bzImage -hda rootfs.img -append "console=ttyS0 root=/dev/sda" -nographic -s -S
 `
