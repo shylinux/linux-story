@@ -15,7 +15,7 @@ refer `
 
 chapter "进程管理"
 field hostinfo runtime args hostinfo
-field procinfo runtime args procinfo
+field procinfo cli.proc
 
 chapter "磁盘管理"
 field diskinfo runtime args diskinfo
