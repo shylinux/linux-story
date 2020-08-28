@@ -1,11 +1,11 @@
 package kernel
 
 import (
+	"os"
 	"path"
 
 	ice "github.com/shylinux/icebergs"
 	"github.com/shylinux/icebergs/base/cli"
-	"github.com/shylinux/icebergs/base/tcp"
 	"github.com/shylinux/icebergs/core/code"
 	kit "github.com/shylinux/toolkits"
 )
@@ -19,31 +19,32 @@ var Index = &ice.Context{Name: KERNEL, Help: "内核",
 		)},
 	},
 	Commands: map[string]*ice.Command{
-		ice.CTX_INIT: {Hand: func(m *ice.Message, c *ice.Context, cmd string, arg ...string) {}},
-		ice.CTX_EXIT: {Hand: func(m *ice.Message, c *ice.Context, cmd string, arg ...string) {}},
-
-		KERNEL: {Name: "kernel auto 启动:button 编译:button 下载:button", Help: "内核", Action: map[string]*ice.Action{
+		KERNEL: {Name: "kernel port=auto path=auto auto 启动:button 构建:button 下载:button", Help: "内核", Action: map[string]*ice.Action{
 			"download": {Name: "download", Help: "下载", Hand: func(m *ice.Message, arg ...string) {
-				m.Cmdy(code.INSTALL, "download", m.Conf(KERNEL, "meta.source"))
+				m.Cmdy(code.INSTALL, "download", m.Conf(KERNEL, kit.META_SOURCE))
 			}},
-			"prepare": {Name: "prepare", Help: "安装", Hand: func(m *ice.Message, arg ...string) {
-				m.Cmdy(cli.SYSTEM, "yum", "install", "-y", "e4fsprogs")
-			}},
-			"compile": {Name: "compile", Help: "编译", Hand: func(m *ice.Message, arg ...string) {
-				name := kit.TrimExt(m.Conf(KERNEL, kit.Keys(kit.MDB_META, "source")))
-				m.Option(cli.CMD_DIR, path.Join(m.Conf(code.INSTALL, kit.META_PATH), name))
-				m.Cmdy(cli.SYSTEM, "make", "defconfig")
-				m.Cmdy(cli.SYSTEM, "make", "-j8")
+			"build": {Name: "build", Help: "构建", Hand: func(m *ice.Message, arg ...string) {
+				m.Optionv("prepare", func(p string) {
+					m.Option(cli.CMD_DIR, p)
+					m.Cmdy(cli.SYSTEM, "make", "defconfig")
+				})
+				// m.Cmdy(code.INSTALL, "build", m.Conf(KERNEL, kit.META_SOURCE))
+
+				p := path.Join(m.Conf(code.INSTALL, kit.META_PATH), kit.TrimExt(m.Conf(KERNEL, kit.META_SOURCE)))
+				os.MkdirAll(path.Join(p, "install"), ice.MOD_DIR)
+				m.Option(cli.CMD_DIR, p)
+				m.Cmdy(cli.SYSTEM, "cp", "arch/x86_64/boot/bzImage", "install/linux")
+				m.Cmdy(cli.SYSTEM, "dd", "if=/dev/zero", "of=install/rootfs.img", "bs=1M", "count=100")
+				m.Cmdy(cli.SYSTEM, "mkfs.ext4", "install/rootfs.img")
+				// m.Cmdy(cli.SYSTEM, "yum", "install", "-y", "e4fsprogs")
 			}},
 			"start": {Name: "start", Help: "启动", Hand: func(m *ice.Message, arg ...string) {
-				port := m.Cmdx(tcp.PORT, "select")
-				p := path.Join(m.Conf(cli.DAEMON, kit.META_PATH), port)
-				m.Option(cli.CMD_DIR, p)
-				m.Cmdy(cli.SYSTEM, "dd", "if=/dev/zero", "of=rootfs.img", "bs=1M", "count=100")
-				m.Cmdy(cli.SYSTEM, "mkfs.ext4", "rootfs.img")
+				m.Optionv("prepare", func(p string) []string { return []string{} })
+				m.Cmdy(code.INSTALL, "start", m.Conf(KERNEL, kit.META_SOURCE),
+					"qemu-system-x86_64", "-kernel", "linux", "-nographic")
 			}},
 		}, Hand: func(m *ice.Message, c *ice.Context, cmd string, arg ...string) {
-			m.Echo("hello kernel world")
+			m.Cmdy(code.INSTALL, m.Conf(KERNEL, kit.META_SOURCE), arg)
 		}},
 	},
 }
