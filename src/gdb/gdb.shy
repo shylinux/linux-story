@@ -5,12 +5,20 @@ refer `
 文档 http://sourceware.org/gdb/current/onlinedocs/gdb/
 `
 
-section "体验"
-field "编译器" web.code.gdb.gdb
-field "编译器" web.code.inner args `[ usr/gdb/ string/string.h ]`
+field "调试器" web.code.gdb.gdb
+field "调试器" web.code.inner args `[ usr/install/gdb-7.6.1/ gdb/xtensa-tdep.c 3018 ]`
 
-section "下载"
+section "安装编译"
 spark shell `
-git clone https://mirrors.tuna.tsinghua.edu.cn/git/gdb.git
+wget http://mirrors.aliyun.com/gnu/gdb/gdb-7.6.1.tar.bz2
+tar xvf gdb-7.6.1.tar.bz2 && cd gdb-7.6.1
+./configure --prefix=$PWD/install
+make -j8 && make install
+`
+
+section "使用体验"
+spark shell `
+cd ./install
+./bin/gdb --version
 `
 

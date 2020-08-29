@@ -1,12 +1,23 @@
 chapter "标准库"
+refer `
+官网 https://www.gnu.org/software/libc/
+源码 git://sourceware.org/git/glibc.git
+文档 https://www.gnu.org/software/libc/manual/html_mono/libc.html
 
-section "下载"
-spark shell `
-git clone https://mirrors.tuna.tsinghua.edu.cn/git/glibc.git
 `
 
-section "体验"
 field "标准库" web.code.glibc.glibc
-field "标准库" web.code.inner args `[ usr/glibc/ string/string.h ]`
+field "标准库" web.code.inner args `[ usr/install/glibc-2.17/ string/string.h ]`
 
+section "安装编译"
+spark shell `
+wget http://mirrors.aliyun.com/gnu/glibc/glibc-2.17.tar.gz
+tar xvf glibc-2.17.tar.gz && cd glibc-2.17
+mkdir install && cd install
+../configure --prefix=$PWD
+make -j8 && make install
+`
+section "使用体验"
+spark shell `
+`
 

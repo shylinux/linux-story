@@ -5,15 +5,19 @@ refer `
 文档 https://gcc.gnu.org/onlinedocs/gcc-4.8.5/gcc/
 `
 
-section "体验"
 field "编译器" web.code.gcc.gcc
-field "编译器" web.code.inner args `[ usr/install/gcc-4.8.5/ string/string.h ]`
+field "编译器" web.code.inner args `[ usr/install/gcc-4.8.5/ gcc/main.c ]`
 
-section "下载"
+section "安装编译"
 spark shell `
 wget http://mirrors.aliyun.com/gnu/gcc/gcc-4.8.5/gcc-4.8.5.tar.gz
 tar xvf gcc-4.8.5.tar.gz && cd gcc-4.8.5
 ./configure --prefix=$PWD/install --enable-languages=c,c++ --disable-checking --disable-multilib
 make -j8 && make install
+`
+section "使用体验"
+spark shell `
+cd ./install
+./bin/gcc --version
 `
 
