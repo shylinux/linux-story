@@ -1,0 +1,13 @@
+title "centos"
+refer `
+官网 https://www.centos.org/
+源码 http://vault.centos.org/
+文档 https://docs.centos.org/en-US/8-docs/managing-userspace-components/
+`
+premenu
+
+chapter "安装系统"
+refer `
+下载 https://mirrors.aliyun.com/centos/8.2.2004/isos/x86_64/CentOS-8.2.2004-x86_64-minimal.iso
+`
+chapter "软件管理"
