@@ -1,0 +1,27 @@
+title "alpine"
+refer `
+官网 https://www.alpinelinux.org/
+源码 https://git.alpinelinux.org/
+文档 https://help.ubuntu.com/16.04/serverguide/introduction-chap.html
+`
+premenu
+
+chapter "安装系统"
+refer `
+下载 https://iso.mirrors.ustc.edu.cn/alpine/v3.9/releases/x86_64/alpine-standard-3.9.6-x86_64.iso
+`
+
+spark `
+修改配置 /etc/apk/repositories
+使用软件源 https://mirrors.aliyun.com/ubuntu
+更新缓存 apk update
+`
+
+spark shell `
+apk add git make go tmux bash vim
+git clone https://github.com/shylinux/contexts
+cd contexts && source etc/miss.sh
+`
+
+chapter "软件管理"
+
