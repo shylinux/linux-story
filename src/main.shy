@@ -1,25 +1,20 @@
 title "linux"
 premenu
-source glibc/glibc.shy
-source gcc/gcc.shy
-source gdb/gdb.shy
-
-source qemu/qemu.shy
-source kernel/kernel.shy
-source busybox/busybox.shy
-return
 
 chapter "阿里云"
 refer `
 官网 https://www.aliyun.com/
-后台 https://homenew.console.aliyun.com/
 终端 https://ecs-workbench.aliyun.com/
+后台 https://homenew.console.aliyun.com/
 `
 
 chapter "树莓派"
 refer `
 官网 https://www.raspberrypi.org/
 `
+
+chapter "用户管理"
+field userinfo runtime args userinfo
 
 chapter "进程管理"
 field hostinfo runtime args hostinfo
@@ -31,6 +26,12 @@ field diskinfo runtime args diskinfo
 chapter "网络管理"
 field ifconfig runtime args ifconfig
 
-chapter "用户管理"
-field userinfo runtime args userinfo
+source glibc/glibc.shy
+source gcc/gcc.shy
+source gdb/gdb.shy
+
+source qemu/qemu.shy
+source kernel/kernel.shy
+source busybox/busybox.shy
+return
 

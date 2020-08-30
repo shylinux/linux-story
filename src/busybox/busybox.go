@@ -19,7 +19,7 @@ var Index = &ice.Context{Name: BUSYBOX, Help: "busybox",
 	},
 	Commands: map[string]*ice.Command{
 		ice.CTX_INIT: {Hand: func(m *ice.Message, c *ice.Context, cmd string, arg ...string) {
-			m.Cmd("web.spide_rewrite", "create", "from", "https://busybox.net/downloads/busybox-1.32.0.tar.bz2", "to", "http://localhost:9020/publish/busybox-1.32.0.tar.bz2")
+			// m.Cmd("web.spide_rewrite", "create", "from", "https://busybox.net/downloads/busybox-1.32.0.tar.bz2", "to", "http://localhost:9020/publish/busybox-1.32.0.tar.bz2")
 		}},
 		ice.CTX_EXIT: {Hand: func(m *ice.Message, c *ice.Context, cmd string, arg ...string) {}},
 
