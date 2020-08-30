@@ -1,1 +1,0 @@
-../../src/glibc/glibc.js
