@@ -4,16 +4,26 @@ refer `
 源码 http://archive.ubuntu.com/ubuntu/
 文档 https://help.ubuntu.com/16.04/serverguide/introduction-chap.html
 `
+premenu
 
 chapter "安装系统"
 refer `
 下载 http://mirrors.aliyun.com/ubuntu-releases/16.04/ubuntu-16.04.7-server-amd64.iso
 `
-chapter "软件管理"
 
-section "软件源"
 spark `
 修改配置 /etc/apt/sources.list
 使用软件源 https://mirrors.aliyun.com/ubuntu
 更新缓存 sudo apt update
 `
+
+spark shell `
+apt update
+apt install -y git make golang tmux vim
+git clone https://github.com/shylinux/contexts
+cd contexts && make && source etc/miss.sh
+`
+
+chapter "软件管理"
+
+section "软件源"

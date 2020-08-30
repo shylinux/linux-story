@@ -10,4 +10,10 @@ chapter "安装系统"
 refer `
 下载 https://mirrors.aliyun.com/centos/8.2.2004/isos/x86_64/CentOS-8.2.2004-x86_64-minimal.iso
 `
+
+spark shell `
+yum install -y git make golang tmux vim
+git clone https://github.com/shylinux/contexts
+cd contexts && make && source etc/miss.sh
+`
 chapter "软件管理"
