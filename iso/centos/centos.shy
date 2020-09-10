@@ -9,11 +9,12 @@ premenu
 chapter "安装系统"
 refer `
 下载 https://mirrors.aliyun.com/centos/8.2.2004/isos/x86_64/CentOS-8.2.2004-x86_64-minimal.iso
+镜像 https://developer.aliyun.com/mirror/centos?spm=a2c6h.13651102.0.0.3e221b11yYVziD
 `
 
 spark shell `
-yum install -y git make golang tmux vim
-git clone https://github.com/shylinux/contexts
-cd contexts && source etc/miss.sh
+curl -o /etc/yum.repos.d/CentOS-Base.repo https://mirrors.aliyun.com/repo/Centos-8.repo && yum -y update
+yum install -y tmux vim
+yum install -y make git go
 `
 chapter "软件管理"
