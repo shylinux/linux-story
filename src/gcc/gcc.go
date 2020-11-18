@@ -1,10 +1,10 @@
 package gcc
 
 import (
-	"github.com/shylinux/icebergs"
-	"github.com/shylinux/icebergs/base/cli"
+	ice "github.com/shylinux/icebergs"
+	"github.com/shylinux/icebergs/base/gdb"
 	"github.com/shylinux/icebergs/core/code"
-	"github.com/shylinux/toolkits"
+	kit "github.com/shylinux/toolkits"
 
 	"path"
 )
@@ -23,19 +23,12 @@ var Index = &ice.Context{Name: GCC, Help: "编译器",
 		)},
 	},
 	Commands: map[string]*ice.Command{
-		GCC: {Name: "gcc port=auto path=auto auto 启动:button 构建:button 下载:button", Help: "编译器", Action: map[string]*ice.Action{
-			"download": {Name: "download", Help: "下载", Hand: func(m *ice.Message, arg ...string) {
-				m.Cmdy(code.INSTALL, "download", m.Conf(GCC, kit.META_SOURCE))
+		GCC: {Name: "gcc path auto build install", Help: "编译器", Action: map[string]*ice.Action{
+			code.INSTALL: {Name: "download", Help: "下载", Hand: func(m *ice.Message, arg ...string) {
+				m.Cmdy(code.INSTALL, code.INSTALL, m.Conf(GCC, kit.META_SOURCE))
 			}},
-			"build": {Name: "build", Help: "构建", Hand: func(m *ice.Message, arg ...string) {
-				m.Cmdy(code.INSTALL, "build", m.Conf(GCC, kit.META_SOURCE), m.Confv(GCC, "meta.build"))
-			}},
-			"start": {Name: "start", Help: "启动", Hand: func(m *ice.Message, arg ...string) {
-				m.Optionv("prepare", func(p string) []string {
-					m.Option(cli.CMD_DIR, p)
-					return []string{}
-				})
-				m.Cmdy(code.INSTALL, "start", m.Conf(GCC, kit.META_SOURCE), "bin/gcc")
+			gdb.BUILD: {Name: "build", Help: "构建", Hand: func(m *ice.Message, arg ...string) {
+				m.Cmdy(code.INSTALL, gdb.BUILD, m.Conf(GCC, kit.META_SOURCE), m.Confv(GCC, "meta.build"))
 			}},
 		}, Hand: func(m *ice.Message, c *ice.Context, cmd string, arg ...string) {
 			m.Cmdy(code.INSTALL, path.Base(m.Conf(GCC, kit.META_SOURCE)), arg)
