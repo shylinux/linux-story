@@ -1,1 +1,6 @@
-title "user"
+chapter "user"
+
+field userinfo runtime args userinfo
+field "who" cli.user.who
+
+

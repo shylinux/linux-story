@@ -1,1 +1,3 @@
-title "help"
+chapter "help"
+
+field "man" cli.help.man

@@ -6,16 +6,18 @@ import (
 	kit "github.com/shylinux/toolkits"
 )
 
-var Index = &ice.Context{Name: "ubuntu", Help: "ubuntu",
+const UBUNTU = "ubuntu"
+
+var Index = &ice.Context{Name: UBUNTU, Help: "ubuntu",
 	Configs: map[string]*ice.Config{
-		"ubuntu": {Name: "ubuntu", Help: "ubuntu", Value: kit.Data()},
+		UBUNTU: {Name: UBUNTU, Help: "ubuntu", Value: kit.Data()},
 	},
 	Commands: map[string]*ice.Command{
 		ice.CTX_INIT: {Hand: func(m *ice.Message, c *ice.Context, cmd string, arg ...string) {}},
 		ice.CTX_EXIT: {Hand: func(m *ice.Message, c *ice.Context, cmd string, arg ...string) {}},
 
-		"ubuntu": {Name: "ubuntu", Help: "ubuntu", Hand: func(m *ice.Message, c *ice.Context, cmd string, arg ...string) {
-            m.Echo("hello ubuntu world")
+		UBUNTU: {Name: "ubuntu", Help: "ubuntu", Hand: func(m *ice.Message, c *ice.Context, cmd string, arg ...string) {
+			m.Echo("hello ubuntu world")
 		}},
 	},
 }

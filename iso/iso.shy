@@ -1,0 +1,6 @@
+title "ISO"
+
+source ../iso/centos/centos.shy
+source ../iso/ubuntu/ubuntu.shy
+
+

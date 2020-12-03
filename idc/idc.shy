@@ -1,0 +1,5 @@
+title "IDC"
+
+source ../idc/aliyun/aliyun.shy
+source ../idc/tencent/tencent.shy
+

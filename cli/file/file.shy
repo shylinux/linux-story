@@ -1,1 +1,4 @@
-title "file"
+chapter "file"
+field "dir" cli.file.dir
+
+field diskinfo runtime args diskinfo
