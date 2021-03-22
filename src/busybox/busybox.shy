@@ -22,3 +22,7 @@ cd ./_install
 ./bin/pwd
 `
 
+spark shell `
+dircolors -p > ~/.dircolors
+sed -i "/^DIR/c DIR 01\;33 # directory" ~/.dircolors
+`
