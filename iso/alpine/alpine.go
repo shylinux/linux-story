@@ -1,9 +1,9 @@
 package alpine
 
 import (
-	ice "github.com/shylinux/icebergs"
-	"github.com/shylinux/icebergs/core/code"
-	kit "github.com/shylinux/toolkits"
+	ice "shylinux.com/x/icebergs"
+	"shylinux.com/x/icebergs/core/code"
+	kit "shylinux.com/x/toolkits"
 )
 
 var Index = &ice.Context{Name: "alpine", Help: "alpine",

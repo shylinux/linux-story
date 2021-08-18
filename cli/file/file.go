@@ -1,9 +1,9 @@
 package file
 
 import (
-	"github.com/shylinux/icebergs"
-	"github.com/shylinux/icebergs/base/cli"
-	"github.com/shylinux/toolkits"
+	"shylinux.com/x/icebergs"
+	"shylinux.com/x/icebergs/base/cli"
+	"shylinux.com/x/toolkits"
 
 	"os"
 )

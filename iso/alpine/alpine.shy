@@ -19,7 +19,7 @@ spark `
 
 spark shell `
 apk add git make go tmux bash vim
-git clone https://github.com/shylinux/contexts
+git clone https://shylinux.com/x/contexts
 cd contexts && source etc/miss.sh
 `
 

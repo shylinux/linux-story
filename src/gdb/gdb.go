@@ -1,10 +1,10 @@
 package gdb
 
 import (
-	"github.com/shylinux/icebergs"
-	"github.com/shylinux/icebergs/base/cli"
-	"github.com/shylinux/icebergs/core/code"
-	"github.com/shylinux/toolkits"
+	"shylinux.com/x/icebergs"
+	"shylinux.com/x/icebergs/base/cli"
+	"shylinux.com/x/icebergs/core/code"
+	"shylinux.com/x/toolkits"
 
 	"path"
 )
