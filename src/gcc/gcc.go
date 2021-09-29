@@ -1,6 +1,8 @@
 package gcc
 
 import (
+	"path"
+
 	"shylinux.com/x/ice"
 	"shylinux.com/x/icebergs/base/cli"
 	"shylinux.com/x/icebergs/base/nfs"
@@ -19,7 +21,7 @@ func (s Source) Build(m *ice.Message, arg ...string) {
 	s.Code.Build(m, m.Config(cli.SOURCE), "--enable-languages=c,c++", "--disable-multilib", "--disable-checking")
 }
 func (s Source) List(m *ice.Message, arg ...string) {
-	m.Option(nfs.DIR_ROOT, s.Code.Path(m, m.Config(cli.SOURCE)))
+	m.Option(nfs.DIR_ROOT, path.Join(s.Code.Path(m, m.Config(cli.SOURCE)), "_install"))
 	m.Cmdy(nfs.CAT, arg)
 }
 
