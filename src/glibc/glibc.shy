@@ -3,18 +3,17 @@ refer `
 官网 https://www.gnu.org/software/libc/
 源码 git://sourceware.org/git/glibc.git
 文档 https://www.gnu.org/software/libc/manual/html_mono/libc.html
-
 `
 
-field "标准库" web.code.glibc.glibc
-field "标准库" web.code.inner args `[ usr/install/glibc-2.17/ string/string.h ]`
+field "安装器" web.code.glibc
+field "编辑器" web.code.inner args `[ usr/install/glibc-2.17/ string/string.h ]`
 
-section "安装编译"
+section "编译安装"
 spark shell `
-wget http://mirrors.aliyun.com/gnu/glibc/glibc-2.17.tar.gz
+wget http://mirrors.tencent.com/tinycorelinux/5.x/x86/tcz/src/glibc/glibc-2.17.tar.xz
 tar xvf glibc-2.17.tar.gz && cd glibc-2.17
-mkdir install && cd install
-../configure --prefix=$PWD
+
+../configure --prefix=$PWD/_install
 make -j8 && make install
 `
 section "使用体验"

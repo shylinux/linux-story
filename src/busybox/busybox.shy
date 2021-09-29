@@ -1,17 +1,18 @@
-chapter "系统文件"
+chapter "命令行"
 refer `
 官网 https://busybox.net/
 源码 git://busybox.net/busybox.git
 文档 https://busybox.net/downloads/BusyBox.html
 `
 
-field "命令行" web.code.busybox.busybox
-field "源代码" web.code.inner args `[ usr/install/busybox-1.32.0/ shell/match.c ]`
+field "安装器" web.code.busybox
+field "编辑器" web.code.inner args `[ usr/install/busybox-1.33.0/ shell/match.c ]`
 
 section "编译安装"
 spark shell `
-wget https://busybox.net/downloads/busybox-1.32.0.tar.bz2
+wget https://busybox.net/downloads/busybox-1.33.0.tar.bz2
 tar xvf busybox-1.32.0.tar.bz2 && cd busybox-1.32.0
+
 make defconfig
 make -j8 && make install
 `
@@ -19,10 +20,7 @@ make -j8 && make install
 section "使用体验"
 spark shell `
 cd ./_install
+
 ./bin/pwd
 `
 
-spark shell `
-dircolors -p > ~/.dircolors
-sed -i "/^DIR/c DIR 01\;33 # directory" ~/.dircolors
-`

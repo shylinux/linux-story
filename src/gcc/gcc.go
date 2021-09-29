@@ -1,39 +1,26 @@
 package gcc
 
 import (
-	ice "shylinux.com/x/icebergs"
+	"shylinux.com/x/ice"
 	"shylinux.com/x/icebergs/base/cli"
-	"shylinux.com/x/icebergs/core/code"
-	kit "shylinux.com/x/toolkits"
-
-	"path"
+	"shylinux.com/x/icebergs/base/nfs"
 )
 
-const GCC = "gcc"
-
-var Index = &ice.Context{Name: GCC, Help: "编译器",
-	Configs: map[string]*ice.Config{
-		GCC: {Name: GCC, Help: "编译器", Value: kit.Data(
-			"source", "http://mirrors.aliyun.com/gnu/gcc/gcc-4.8.5/gcc-4.8.5.tar.gz",
-			"build", []interface{}{
-				"--enable-languages=c,c++",
-				"--disable-multilib",
-				"--disable-checking",
-			},
-		)},
-	},
-	Commands: map[string]*ice.Command{
-		GCC: {Name: "gcc path auto build install", Help: "编译器", Action: map[string]*ice.Action{
-			code.INSTALL: {Name: "download", Help: "下载", Hand: func(m *ice.Message, arg ...string) {
-				m.Cmdy(code.INSTALL, code.INSTALL, m.Conf(GCC, kit.META_SOURCE))
-			}},
-			cli.BUILD: {Name: "build", Help: "构建", Hand: func(m *ice.Message, arg ...string) {
-				m.Cmdy(code.INSTALL, cli.BUILD, m.Conf(GCC, kit.META_SOURCE), m.Confv(GCC, "meta.build"))
-			}},
-		}, Hand: func(m *ice.Message, c *ice.Context, cmd string, arg ...string) {
-			m.Cmdy(code.INSTALL, path.Base(m.Conf(GCC, kit.META_SOURCE)), arg)
-		}},
-	},
+type Source struct {
+	ice.Code
+	source string `data:"http://mirrors.tencent.com/macports/distfiles/gcc48/gcc-4.8.4.tar.bz2"`
+	list   string `name:"list path auto build download" help:"编译器"`
 }
 
-func init() { code.Index.Register(Index, nil) }
+func (s Source) Download(m *ice.Message, arg ...string) {
+	s.Code.Download(m, m.Config(cli.SOURCE), arg...)
+}
+func (s Source) Build(m *ice.Message, arg ...string) {
+	s.Code.Build(m, m.Config(cli.SOURCE), "--enable-languages=c,c++", "--disable-multilib", "--disable-checking")
+}
+func (s Source) List(m *ice.Message, arg ...string) {
+	m.Option(nfs.DIR_ROOT, s.Code.Path(m, m.Config(cli.SOURCE)))
+	m.Cmdy(nfs.CAT, arg)
+}
+
+func init() { ice.CodeCmd(Source{}) }

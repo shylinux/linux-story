@@ -1,4 +1,4 @@
-chapter "内核源码"
+chapter "源代码"
 refer `
 官网 https://www.linux.org/
 源码 https://github.com/torvalds/linux
@@ -6,16 +6,18 @@ refer `
 入门 https://blog.csdn.net/weixin_44019745/article/details/102612400
 `
 
-field "内核源码" web.code.kernel.kernel
-field "内核源码" web.code.inner args `[ usr/install/linux-3.10.1/ init/main.c ]`
+field "安装器" web.code.kernel
+field "编辑器" web.code.inner args `[ usr/install/linux-3.12.20/ init/main.c ]`
 
 section "编译安装"
 spark shell `
-wget https://mirrors.tuna.tsinghua.edu.cn/kernel/v3.x/linux-3.10.1.tar.gz
-tar xvf linux-3.10.1.tar.gz && cd linux-3.10.1
+wget http://mirrors.tencent.com/osmc/osmc/download/buildroot/2014.05/linux-3.12.20.tar.xz
+tar xvf linux-3.12.20.tar.xz && cd linux-3.12.20
+
 make defconfig
 make -j8
 `
+
 section "文件系统"
 spark shell `
 dd if=/dev/zero of=rootfs.img bs=1M count=100

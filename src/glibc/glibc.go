@@ -1,49 +1,14 @@
 package glibc
 
 import (
-	"shylinux.com/x/icebergs"
-	"shylinux.com/x/icebergs/base/cli"
-	"shylinux.com/x/icebergs/core/code"
-	"shylinux.com/x/toolkits"
-
-	"path"
+	"shylinux.com/x/ice"
+	"shylinux.com/x/linux-story/src/gdb"
 )
 
-const GLIBC = "glibc"
-
-var Index = &ice.Context{Name: GLIBC, Help: "标准库",
-	Configs: map[string]*ice.Config{
-		GLIBC: {Name: GLIBC, Help: "标准库", Value: kit.Data(
-			"source", "http://mirrors.aliyun.com/gnu/glibc/glibc-2.17.tar.gz",
-			"build", []interface{}{
-				"--enable-languages=c,c++",
-				"--disable-multilib",
-				"--disable-checking",
-			},
-		)},
-	},
-	Commands: map[string]*ice.Command{
-		GLIBC: {Name: "gcc port=auto path=auto auto 启动:button 构建:button 下载:button", Help: "标准库", Action: map[string]*ice.Action{
-			"download": {Name: "download", Help: "下载", Hand: func(m *ice.Message, arg ...string) {
-				m.Cmdy(code.INSTALL, "download", m.Conf(GLIBC, kit.META_SOURCE))
-			}},
-			"build": {Name: "build", Help: "构建", Hand: func(m *ice.Message, arg ...string) {
-				p := m.Option(cli.CMD_DIR, path.Join(m.Conf(code.INSTALL, kit.META_PATH), kit.TrimExt(m.Conf(GLIBC, kit.META_SOURCE)), "install"))
-				m.Cmdy(cli.SYSTEM, "../configure", "--prefix="+kit.Path(path.Dir(p)))
-				m.Cmdy(cli.SYSTEM, "make", "-j8")
-				m.Cmdy(cli.SYSTEM, "make", "install")
-			}},
-			"start": {Name: "start", Help: "启动", Hand: func(m *ice.Message, arg ...string) {
-				m.Optionv("prepare", func(p string) []string {
-					m.Option(cli.CMD_DIR, p)
-					return []string{}
-				})
-				m.Cmdy(code.INSTALL, "start", m.Conf(GLIBC, kit.META_SOURCE), "./testrun.sh", "glibc")
-			}},
-		}, Hand: func(m *ice.Message, c *ice.Context, cmd string, arg ...string) {
-			m.Cmdy(code.INSTALL, path.Base(m.Conf(GLIBC, kit.META_SOURCE)), arg)
-		}},
-	},
+type Source struct {
+	gdb.Source
+	source string `data:"http://mirrors.tencent.com/tinycorelinux/5.x/x86/tcz/src/glibc/glibc-2.17.tar.xz"`
+	list   string `name:"list path auto build download" help:"标准库"`
 }
 
-func init() { code.Index.Register(Index, nil) }
+func init() { ice.CodeCmd(Source{}) }

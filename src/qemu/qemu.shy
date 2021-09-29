@@ -2,20 +2,25 @@ chapter "虚拟机"
 refer `
 官网 https://www.qemu.org/
 源码 https://github.com/qemu/qemu
+文档 https://qemu-project.gitlab.io/qemu/
 `
 
-field "虚拟机" web.code.qemu.qemu
-field "源代码" web.code.inner args `[ usr/install/qemu qemu-img.c 5395 ]`
+field "安装器" web.code.qemu
+field "编辑器" web.code.inner args `[ usr/install/qemu-3.1.0 qemu-img.c 5395 ]`
 
-section "安装编译"
+section "编译安装"
 spark shell `
-git clone https://mirrors.tuna.tsinghua.edu.cn/git/qemu.git && cd qemu
-./configure --prefix=$PWD/install
+wget http://mirrors.tencent.com/OpenBSD/6.6/packages/arm/qemu-3.1.0.tgz
+tar xvf qemu-3.1.0.tgz && cd qemu-3.1.0
+
+./configure --prefix=$PWD/_install
 make -j8 && make install
 `
+
 section "使用体验"
 spark shell `
 cd ./install
+
 ./bin/qemu
 `
 

@@ -5,34 +5,33 @@ refer `
 文档 https://gcc.gnu.org/onlinedocs/gcc-4.8.5/gcc/
 `
 
-field "编译器" web.code.gcc.gcc
-field "编译器" web.code.inner args `[ usr/install/gcc-4.8.5/ gcc/main.c ]`
+field "安装器" web.code.gcc
+field "编辑器" web.code.inner args `[ usr/install/gcc-4.8.4/ gcc/main.c ]`
 
-section "安装编译"
+section "编译安装"
 spark shell `
 yum install -y wget gcc gcc-c++
 yum install -y gmp-devel.x86_64 libmpc.x86_64 mpfr-devel.x86_64
 
-wget http://mirrors.aliyun.com/gnu/gcc/gcc-4.8.5/gcc-4.8.5.tar.gz
-tar xvf gcc-4.8.5.tar.gz && cd gcc-4.8.5
+wget http://mirrors.tencent.com/macports/distfiles/gcc48/gcc-4.8.4.tar.bz2
+tar xvf gcc-4.8.4.tar.bz2 && cd gcc-4.8.5
 
 wget ftp://ftp.gnu.org/gnu/gmp/gmp-4.3.2.tar.bz2
-tar xvf gmp-4.3.2.tar.bz2
-mv gmp-4.3.2.tar.bz2 gmp
+tar xvf gmp-4.3.2.tar.bz2 && mv gmp-4.3.2 gmp
 
 wget http://www.mpfr.org/mpfr-2.4.2/mpfr-2.4.2.tar.bz2
-tar xvf mpfr-2.4.2.tar.bz2
-mv mpfr-2.4.2.tar.bz2 mpfr
+tar xvf mpfr-2.4.2.tar.bz2 && mv mpfr-2.4.2 mpfr
 
 wget http://www.multiprecision.org/mpc/download/mpc-0.8.1.tar.gz
-xvf mpc-0.8.1.tar.gz
-mv mpc-0.8.1.tar.gz m 
+xvf mpc-0.8.1.tar.g2z && mv mpc-0.8.1 mpc
+
 ./configure --prefix=$PWD/_install --enable-languages=c,c++ --disable-checking --disable-multilib
 make -j8 && make install
 `
 section "使用体验"
 spark shell `
 cd ./install
+
 ./bin/gcc --version
 `
 

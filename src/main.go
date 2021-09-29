@@ -1,13 +1,7 @@
 package main
 
 import (
-	ice "shylinux.com/x/icebergs"
-	_ "shylinux.com/x/icebergs/base"
-	_ "shylinux.com/x/icebergs/core"
-	_ "shylinux.com/x/icebergs/misc"
-
-	_ "shylinux.com/x/linux-story/iso/centos"
-	_ "shylinux.com/x/linux-story/iso/ubuntu"
+	"shylinux.com/x/ice"
 
 	_ "shylinux.com/x/linux-story/src/gcc"
 	_ "shylinux.com/x/linux-story/src/gdb"
@@ -16,6 +10,9 @@ import (
 	_ "shylinux.com/x/linux-story/src/busybox"
 	_ "shylinux.com/x/linux-story/src/kernel"
 	_ "shylinux.com/x/linux-story/src/qemu"
+
+	_ "shylinux.com/x/linux-story/iso/centos"
+	_ "shylinux.com/x/linux-story/iso/ubuntu"
 )
 
 func main() { print(ice.Run()) }

@@ -1,25 +1,13 @@
 package centos
 
 import (
-	ice "shylinux.com/x/icebergs"
-	"shylinux.com/x/icebergs/core/code"
-	kit "shylinux.com/x/toolkits"
+	"shylinux.com/x/ice"
 )
 
-const CENTOS = "centos"
-
-var Index = &ice.Context{Name: CENTOS, Help: "centos",
-	Configs: map[string]*ice.Config{
-		CENTOS: {Name: CENTOS, Help: "centos", Value: kit.Data()},
-	},
-	Commands: map[string]*ice.Command{
-		ice.CTX_INIT: {Hand: func(m *ice.Message, c *ice.Context, cmd string, arg ...string) {}},
-		ice.CTX_EXIT: {Hand: func(m *ice.Message, c *ice.Context, cmd string, arg ...string) {}},
-
-		CENTOS: {Name: "centos", Help: "centos", Hand: func(m *ice.Message, c *ice.Context, cmd string, arg ...string) {
-			m.Echo("hello centos world")
-		}},
-	},
+type Source struct {
+	ice.Code
+	source string `data:"http://mirrors.tencent.com/macports/distfiles/gcc48/gcc-4.8.4.tar.bz2"`
+	list   string `name:"list path auto build download" help:"操作系统"`
 }
 
-func init() { code.Index.Register(Index, nil) }
+func init() { ice.CodeCmd(Source{}) }
