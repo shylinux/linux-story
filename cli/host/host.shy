@@ -1,3 +1,6 @@
 chapter "host"
 
+spark shell `
+sudo tcpdump port 9200 -vvv -i lo -A
+`
 field ifconfig runtime args ifconfig

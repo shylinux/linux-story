@@ -1,4 +1,6 @@
-title "CLI"
+title "cli"
+source host/host.shy
+return
 
 source help/help.shy
 source user/user.shy
