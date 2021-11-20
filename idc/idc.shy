@@ -1,5 +1,15 @@
 title "IDC"
 
+refer `
+2016 http://2016.shylinux.com:9020
+2020 http://2020.shylinux.com:9020
+2021 http://2021.shylinux.com:9020
+`
+spark shell `
+ssh shy@2016.shylinux.com
+ssh shy@2020.shylinux.com
+ssh shy@2021.shylinux.com
+`
 source ../idc/aliyun/aliyun.shy
 source ../idc/tencent/tencent.shy
 
