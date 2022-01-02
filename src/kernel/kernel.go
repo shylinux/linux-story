@@ -2,7 +2,7 @@ package kernel
 
 import (
 	"shylinux.com/x/ice"
-	"shylinux.com/x/icebergs/base/cli"
+	"shylinux.com/x/icebergs/base/nfs"
 	"shylinux.com/x/linux-story/src/gcc"
 )
 
@@ -14,7 +14,7 @@ type Source struct {
 
 func (s Source) Build(m *ice.Message, arg ...string) {
 	s.Code.Prepare(m, func(p string) { s.Code.System(m, p, "make", "defconfig") })
-	s.Code.Build(m, m.Config(cli.SOURCE))
+	s.Code.Build(m, m.Config(nfs.SOURCE))
 }
 
 func init() { ice.CodeCmd(Source{}) }
