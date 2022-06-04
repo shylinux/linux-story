@@ -13,9 +13,6 @@ type Source struct {
 	list   string `name:"list path auto build download" help:"编译器"`
 }
 
-func (s Source) Download(m *ice.Message, arg ...string) {
-	s.Code.Download(m, m.Config(nfs.SOURCE), arg...)
-}
 func (s Source) Build(m *ice.Message, arg ...string) {
 	s.Code.Build(m, m.Config(nfs.SOURCE), "--enable-languages=c,c++", "--disable-multilib", "--disable-checking")
 }

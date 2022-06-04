@@ -2,7 +2,6 @@ package gdb
 
 import (
 	"shylinux.com/x/ice"
-	"shylinux.com/x/icebergs/base/nfs"
 	"shylinux.com/x/linux-story/src/gcc"
 )
 
@@ -13,7 +12,7 @@ type Source struct {
 }
 
 func (s Source) Build(m *ice.Message, arg ...string) {
-	s.Code.Build(m, m.Config(nfs.SOURCE), arg...)
+	s.Code.Build(m)
 }
 
 func init() { ice.CodeCmd(Source{}) }
