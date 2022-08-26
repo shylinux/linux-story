@@ -1,6 +1,0 @@
-chapter "proc"
-
-field hostinfo runtime args hostinfo
-field procinfo cli.proc
-
-

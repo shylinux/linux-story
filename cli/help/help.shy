@@ -1,3 +1,0 @@
-chapter "help"
-
-field "man" cli.help.man

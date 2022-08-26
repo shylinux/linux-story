@@ -10,20 +10,20 @@ refer `
 镜像 https://developer.aliyun.com/mirror/centos?spm=a2c6h.13651102.0.0.3e221b11yYVziD
 `
 
-spark shell `
+shell `
 curl -o /etc/yum.repos.d/CentOS-Base.repo https://mirrors.aliyun.com/repo/Centos-8.repo && yum -y update
 yum install -y tmux make git vim go
 `
 
 section "centos"
-spark shell `
+shell `
 ssh root@114.132.199.163 # 登录主机
 useradd -m shy           # 添加用户
 passwd shy               # 添加密码
 visudo                   # 添加权限
 su shy                   # 切换用户
 `
-spark shell `
+shell `
 ctx_temp=$(mktemp)\; curl -fsSL https://shylinux.com -o $ctx_temp; source $ctx_temp source
 `
 order `

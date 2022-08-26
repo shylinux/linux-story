@@ -24,3 +24,8 @@ ssh-copy-id shy@2022.shylinux.com
 ssh shy@2022.shylinux.com
 `
 
+shell `
+systemctl start docker
+docker run --user=root -w /root -it alpine
+sed -i 's/dl-cdn.alpinelinux.org/mirrors.tuna.tsinghua.edu.cn/g' /etc/apk/repositories
+`

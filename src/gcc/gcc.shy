@@ -9,7 +9,7 @@ field "安装器" web.code.gcc
 field "编辑器" web.code.inner args `[ usr/install/gcc-4.8.4/ gcc/main.c ]`
 
 section "编译安装"
-spark shell `
+shell `
 yum install -y wget gcc gcc-c++
 yum install -y gmp-devel.x86_64 libmpc.x86_64 mpfr-devel.x86_64
 
@@ -29,7 +29,7 @@ xvf mpc-0.8.1.tar.g2z && mv mpc-0.8.1 mpc
 make -j8 && make install
 `
 section "使用体验"
-spark shell `
+shell `
 cd ./install
 
 ./bin/gcc --version

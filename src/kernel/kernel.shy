@@ -10,7 +10,7 @@ field "安装器" web.code.kernel
 field "编辑器" web.code.inner args `[ usr/install/linux-3.12.20/ init/main.c ]`
 
 section "编译安装"
-spark shell `
+shell `
 wget http://mirrors.tencent.com/osmc/osmc/download/buildroot/2014.05/linux-3.12.20.tar.xz
 tar xvf linux-3.12.20.tar.xz && cd linux-3.12.20
 
@@ -19,7 +19,7 @@ make -j8
 `
 
 section "文件系统"
-spark shell `
+shell `
 dd if=/dev/zero of=rootfs.img bs=1M count=100
 
 sudo yum install -y e4fsprogs
@@ -56,7 +56,7 @@ echo -e "\nBoot took $(cut -d' ' -f1 /proc/uptime) seconds\n"
 `
 
 section "使用体验"
-spark shell `
+shell `
 cd ..
 sudo unmount rootfs
 sudo qemu-system-x86_64 -kernel bzImage -hda rootfs.img -append "console=ttyS0 root=/dev/sda" -nographic -s -S

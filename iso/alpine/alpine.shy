@@ -17,7 +17,7 @@ spark `
 更新缓存 apk update
 `
 
-spark shell `
+shell `
 apk add git make go tmux bash vim
 git clone https://shylinux.com/x/contexts
 cd contexts && source etc/miss.sh

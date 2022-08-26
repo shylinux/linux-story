@@ -9,7 +9,7 @@ field "安装器" web.code.gdb
 field "编辑器" web.code.inner args `[ usr/install/gdb-7.6.1/ gdb/xtensa-tdep.c 3018 ]`
 
 section "编译安装"
-spark shell `
+shell `
 wget http://mirrors.tencent.com/macports/distfiles/avr-gdb/gdb-7.6.1.tar.bz2
 tar xvf gdb-7.6.1.tar.bz2 && cd gdb-7.6.1
 
@@ -18,7 +18,7 @@ make -j8 && make install
 `
 
 section "使用体验"
-spark shell `
+shell `
 cd ./_install
 
 ./bin/gdb --version

@@ -9,7 +9,7 @@ field "安装器" web.code.busybox
 field "编辑器" web.code.inner args `[ usr/install/busybox-1.33.0/ shell/match.c ]`
 
 section "编译安装"
-spark shell `
+shell `
 wget https://busybox.net/downloads/busybox-1.33.0.tar.bz2
 tar xvf busybox-1.32.0.tar.bz2 && cd busybox-1.32.0
 
@@ -18,7 +18,7 @@ make -j8 && make install
 `
 
 section "使用体验"
-spark shell `
+shell `
 cd ./_install
 
 ./bin/pwd

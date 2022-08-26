@@ -11,7 +11,7 @@ refer `
 镜像 https://developer.aliyun.com/mirror/ubuntu?spm=a2c6h.13651102.0.0.45101b11HWExWZ
 `
 
-spark shell `
+shell `
 sed -i 's/[a-z]*.ubuntu.com/mirrors.aliyun.com/' /etc/apt/sources.list && apt update
 apt install -y tmux make golang git vim
 `
