@@ -5,8 +5,8 @@ refer `
 文档 http://sourceware.org/gdb/current/onlinedocs/gdb/
 `
 
-field "安装器" web.code.gdb
-field "编辑器" web.code.inner args `[ usr/install/gdb-7.6.1/ gdb/xtensa-tdep.c 3018 ]`
+field "调试器" web.code.gdb.runtime
+field "源代码" web.code.inner args `usr/install/gdb-7.6.1/ gdb/xtensa-tdep.c 3018`
 
 section "编译安装"
 shell `
@@ -20,7 +20,5 @@ make -j8 && make install
 section "使用体验"
 shell `
 cd ./_install
-
 ./bin/gdb --version
 `
-

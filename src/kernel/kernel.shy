@@ -6,16 +6,15 @@ refer `
 入门 https://blog.csdn.net/weixin_44019745/article/details/102612400
 `
 
-field "安装器" web.code.kernel
-field "编辑器" web.code.inner args `[ usr/install/linux-3.12.20/ init/main.c ]`
+field "源代码" web.code.kernel.runtime
+field "源代码" web.code.inner args `usr/install/linux-3.12.20/ init/main.c`
 
 section "编译安装"
 shell `
 wget http://mirrors.tencent.com/osmc/osmc/download/buildroot/2014.05/linux-3.12.20.tar.xz
 tar xvf linux-3.12.20.tar.xz && cd linux-3.12.20
 
-make defconfig
-make -j8
+make defconfig && make -j8
 `
 
 section "文件系统"

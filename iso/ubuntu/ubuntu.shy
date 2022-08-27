@@ -1,8 +1,8 @@
 chapter "ubuntu"
 refer `
 官网 https://ubuntu.com/
+文档 https://ubuntu.com/tutorials
 源码 http://archive.ubuntu.com/ubuntu/
-文档 https://help.ubuntu.com/16.04/serverguide/introduction-chap.html
 `
 
 section "安装环境"
@@ -13,6 +13,5 @@ refer `
 
 shell `
 sed -i 's/[a-z]*.ubuntu.com/mirrors.aliyun.com/' /etc/apt/sources.list && apt update
-apt install -y tmux make golang git vim
+apt install -y make git golang vim tmux
 `
-

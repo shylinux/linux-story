@@ -1,5 +1,9 @@
 title "linux"
 
+source ffmpeg/ffmpeg.shy
+source docker/docker.shy
+source kubernetes/kubernetes.shy
+
 source gcc/gcc.shy
 source gdb/gdb.shy
 source glibc/glibc.shy

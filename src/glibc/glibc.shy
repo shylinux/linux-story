@@ -5,18 +5,14 @@ refer `
 文档 https://www.gnu.org/software/libc/manual/html_mono/libc.html
 `
 
-field "安装器" web.code.glibc
-field "编辑器" web.code.inner args `[ usr/install/glibc-2.17/ string/string.h ]`
+field "标准库" web.code.glibc.project
+field "源代码" web.code.inner args `usr/install/glibc-2.17/ string/string.h`
 
 section "编译安装"
 shell `
-wget http://mirrors.tencent.com/tinycorelinux/5.x/x86/tcz/src/glibc/glibc-2.17.tar.xz
+wget https://mirrors.tencent.com/tinycorelinux/5.x/x86/tcz/src/glibc/glibc-2.17.tar.xz
 tar xvf glibc-2.17.tar.gz && cd glibc-2.17
 
-../configure --prefix=$PWD/_install
+./configure --prefix=$PWD/_install
 make -j8 && make install
 `
-section "使用体验"
-shell `
-`
-
