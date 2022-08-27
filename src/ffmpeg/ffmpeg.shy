@@ -4,6 +4,9 @@ refer `
 源码 https://github.com/FFmpeg/FFmpeg
 文档 http://ffmpeg.org/documentation.html
 `
+
+field web.code.ffmpeg.runtime
+
 shell `
 yum install -y yasm
 
@@ -11,5 +14,6 @@ wget https://ffmpeg.org/releases/ffmpeg-4.2.1.tar.bz2
 tar xvf ffmpeg-4.2.1.tar.bz2 && cd ffmpeg-4.2.1/
 
 ./configure --prefix=$PWD/_install
+make -j8 && make install
 `
 
