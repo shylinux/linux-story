@@ -15,3 +15,9 @@ chsh -s /bin/bash
 ssh-keygen ssh-copy-id
 /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
 `
+
+shell `
+xcode-select --install
+xcode-select -switch /Library/Developer/CommandLineTools
+`
+

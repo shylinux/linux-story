@@ -34,3 +34,30 @@ shell `
 cd ./_install
 ./bin/gcc --version
 `
+
+shell `
+wget http://ftp.gnu.org/gnu/gcc/gcc-4.8.5/gcc-4.8.5.tar.gz
+tar xvf gcc-4.8.5.tar.gz && cd gcc-4.8.5
+
+wget https://ftp.gnu.org/gnu/gmp/gmp-6.0.0a.tar.bz2
+tar xvf gmp-6.0.0a.tar.bz2 && cd gmp-6.0.0
+./configure --prefix=$PWD/_install
+make -j8 && make install
+cd ..
+
+wget https://ftp.gnu.org/gnu/mpfr/mpfr-3.1.1.tar.bz2
+tar xvf mpfr-3.1.1.tar.bz2 && cd mpfr-3.1.1/
+./configure --prefix=$PWD/_install --with-gmp=$PWD/../gmp-6.0.0/_install/
+make -j8 && make install
+cd ..
+
+wget mpc https://ftp.gnu.org/gnu/mpc/mpc-1.0.1.tar.gz
+tar xvf mpc-1.0.1.tar.gz && cd mpc-1.0.1/
+./configure --prefix=$PWD/_install --with-gmp=$PWD/../gmp-6.0.0/_install/ --with-mpfr=$PWD/../mpfr-3.1.1/_install/
+make -j8 && make install
+cd ..
+
+./configure --prefix=$PWD/_install --with-gmp=$PWD/gmp-6.0.0/_install/ --with-mpfr=$PWD/mpfr-3.1.1/_install/ --with-mpc=$PWD/mpc-1.0.1/_install/
+make -j8 && make install
+`
+

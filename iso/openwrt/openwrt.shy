@@ -1,0 +1,12 @@
+chapter "openwrt"
+refer `
+官网 https://openwrt.org/
+文档 https://openwrt.org/docs/start
+源码 https://github.com/openwrt/openwrt
+`
+
+shell `
+opkg update
+opkg install git-http
+opkg install ca-bundle
+`
