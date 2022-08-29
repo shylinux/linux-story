@@ -1,0 +1,20 @@
+chapter "ctags"
+refer `
+官网 http://ctags.sourceforge.net/
+文档 http://ctags.sourceforge.net/ctags.html
+源码 https://sourceforge.net/p/ctags/code/HEAD/tree/
+`
+
+shell `
+wget http://prdownloads.sourceforge.net/ctags/ctags-5.8.tar.gz
+tar xvf ctags-5.8.tar.gz && cd ctags-5.8/
+
+./configure --prefix=$PWD/_install
+make -j8 && make install
+
+cd ./_install
+./bin/ctags --help
+
+ctags -R
+`
+
