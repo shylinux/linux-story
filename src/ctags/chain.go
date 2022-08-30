@@ -1,7 +1,6 @@
 package ctags
 
 import (
-	"bufio"
 	"path"
 	"strings"
 
@@ -15,37 +14,18 @@ import (
 	kit "shylinux.com/x/toolkits"
 )
 
-type chain struct {
-}
+type chain struct{}
 
 func (s chain) Find(m *ice.Message, arg ...string) {
 	if !nfs.ExistsFile(m, path.Join(m.Option(nfs.PATH), "tags")) {
 		m.Cmd(cli.SYSTEM, "ctags", "-R", kit.Dict(cli.CMD_DIR, m.Option(nfs.PATH)))
 	}
-	for _, l := range strings.Split(m.Cmdx(cli.SYSTEM, "grep", "^"+arg[0]+"\\>", "tags", kit.Dict(cli.CMD_DIR, m.Option(nfs.PATH))), ice.NL) {
-		ls := strings.SplitN(l, ice.TB, 2)
-		if len(ls) < 2 {
-			continue
-		}
 
-		ls = strings.SplitN(ls[1], ice.TB, 2)
-		file := ls[0]
-		ls = strings.SplitN(ls[1], ";\"", 2)
-		text := strings.TrimSuffix(strings.TrimPrefix(ls[0], "/^"), "$/")
-		line := kit.Int(text)
-
-		f, e := nfs.OpenFile(m, path.Join(m.Option(nfs.PATH), file))
-		m.Assert(e)
-		defer f.Close()
-
-		bio := bufio.NewScanner(f)
-		for i := 1; bio.Scan(); i++ {
-			if i == line || bio.Text() == text {
-				m.ProcessStory(code.INNER, m.Option(nfs.PATH), strings.TrimPrefix(file, nfs.PWD), kit.Format(i))
-				return
-			}
-		}
+	if msg := m.Cmd("web.code.inner", "tags", arg[0]); msg.Append(nfs.FILE) != "" {
+		m.ProcessStory(code.INNER, msg.Append(nfs.PATH), msg.Append(nfs.FILE), msg.Append(nfs.LINE))
+		return
 	}
+
 	m.Option(cli.CMD_ENV, "COLUMNS", "100")
 	if msg := m.Cmd(cli.SYSTEM, "sh", "-c", kit.Format("man %s|col -b", arg[0])); !strings.HasPrefix(msg.Result(), "No manual entry for") {
 		m.ProcessStory(code.INNER, "man", arg[0])

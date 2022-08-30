@@ -5,6 +5,8 @@ refer `
 源码 https://sourceforge.net/p/ctags/code/HEAD/tree/
 `
 
+field web.code.ctags.ctags
+
 shell `
 wget http://prdownloads.sourceforge.net/ctags/ctags-5.8.tar.gz
 tar xvf ctags-5.8.tar.gz && cd ctags-5.8/
