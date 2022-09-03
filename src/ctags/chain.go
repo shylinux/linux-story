@@ -27,13 +27,16 @@ func (s chain) Find(m *ice.Message, arg ...string) {
 	}
 
 	m.Option(cli.CMD_ENV, "COLUMNS", "100")
-	if msg := m.Cmd(cli.SYSTEM, "sh", "-c", kit.Format("man %s|col -b", arg[0])); !strings.HasPrefix(msg.Result(), "No manual entry for") {
+	if msg := m.Cmd(cli.SYSTEM, "sh", "-c", kit.Format("man %s|col -b", arg[0])); cli.IsSuccess(msg) && !strings.HasPrefix(msg.Result(), "No manual entry for") {
 		m.ProcessStory(code.INNER, "man", arg[0])
 		m.Option(mdb.TEXT, msg.Result())
 		return
 	}
 
-	m.ProcessStory(code.INNER, m.Option(nfs.PATH), arg[0], "1")
+	if nfs.ExistsFile(m, path.Join(m.Option(nfs.PATH), arg[0])) {
+		m.ProcessStory(code.INNER, m.Option(nfs.PATH), arg[0], "1")
+		return
+	}
 }
 func (s chain) List(m *ice.Message, arg ...string) {
 	m.Cmdy(wiki.CHART, wiki.CHAIN, arg, kit.Dict(ctx.INDEX, m.PrefixKey()))
