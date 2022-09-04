@@ -7,7 +7,6 @@ import (
 	"shylinux.com/x/ice"
 	"shylinux.com/x/icebergs/base/cli"
 	"shylinux.com/x/icebergs/base/ctx"
-	"shylinux.com/x/icebergs/base/mdb"
 	"shylinux.com/x/icebergs/base/nfs"
 	"shylinux.com/x/icebergs/core/code"
 	"shylinux.com/x/icebergs/core/wiki"
@@ -29,7 +28,6 @@ func (s chain) Find(m *ice.Message, arg ...string) {
 	m.Option(cli.CMD_ENV, "COLUMNS", "100")
 	if msg := m.Cmd(cli.SYSTEM, "sh", "-c", kit.Format("man %s|col -b", arg[0])); cli.IsSuccess(msg) && !strings.HasPrefix(msg.Result(), "No manual entry for") {
 		m.ProcessStory(code.INNER, "man", arg[0])
-		m.Option(mdb.TEXT, msg.Result())
 		return
 	}
 
