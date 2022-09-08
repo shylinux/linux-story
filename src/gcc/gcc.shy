@@ -61,3 +61,114 @@ cd ..
 make -j8 && make install
 `
 
+web.code.ctags.chain `
+api
+	stdio.h
+		scanf
+		printf
+		fopen
+		fread
+		fwrite
+		fflush
+		fscanf
+		fprintf
+		fclose
+		perror
+	stdlib.h
+		malloc
+		free
+		atoi
+		mkstemp
+	ctype.h
+	string.h
+		strlen
+		strcpy
+		strcat
+		strcmp
+	fcntl.h
+		open
+	dirent.h
+		opendir
+		readdir
+		closedir
+	signal.h
+		kill
+	unistd.h
+		read
+		write
+		close
+		chdir
+		rmdir
+		getcwd
+		unlink
+		lseek
+		fork
+		exec
+		exit
+		sleep
+		getpid
+		getppid
+		chroot
+		nice
+		pipe
+	arpa/inet.h
+	netinet/in.h
+	sys/socket.h
+		socket
+		bind
+		listen
+		accept
+		connect
+		read
+		write
+		close
+	sys/types.h
+	sys/wait.h
+		wait
+	sys/stat.h
+		chmod
+		mkdir
+	pthread.h
+		pthread_create
+		pthread_exit
+		pthread_join
+		pthread_cancel
+		pthread_mutex_init
+		pthread_mutex_lock
+		pthread_mutex_unlock
+		pthread_mutex_destroy
+	semaphore.h
+		sem_init
+		sem_wait
+		sem_post
+		sem_destroy
+` path "/usr/include/"
+
+web.code.ctags.chain `
+cli
+	文件管理
+		ls
+		cd
+		mkdir
+		chmod
+		mkfs
+		mount
+		umount
+	进程管理
+		ps
+		top
+		kill
+	命令管理
+		man
+`
+
+spark `
+/etc/ld.so.conf
+LD_LIBRARY_PATH
+pkgconfig
+`
+
+field "库文件" web.code.git.count args "/usr/lib/"
+field "头文件" web.code.git.count args "/usr/include/"
+field "标准流" web.code.inner args "/usr/include/ stdio.h"
+field "标准流" web.code.inner args "man stdio.h 0p"
