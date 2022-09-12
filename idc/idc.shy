@@ -13,8 +13,9 @@ ssh shy@2021.shylinux.com
 ssh shy@2022.shylinux.com
 `
 
-source aliyun/aliyun.shy
 source tencent/tencent.shy
+source aliyun/aliyun.shy
+source aws/aws.shy
 
 shell `
 ssh root@2022.shylinux.com
