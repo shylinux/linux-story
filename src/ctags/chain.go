@@ -8,7 +8,6 @@ import (
 	"shylinux.com/x/icebergs/base/cli"
 	"shylinux.com/x/icebergs/base/ctx"
 	"shylinux.com/x/icebergs/base/nfs"
-	"shylinux.com/x/icebergs/core/code"
 	"shylinux.com/x/icebergs/core/wiki"
 	kit "shylinux.com/x/toolkits"
 )
@@ -18,21 +17,20 @@ type chain struct {
 	list string `name:"list text auto" help:"框架图"`
 }
 
-func (s chain) processInner(m *ice.Message, arg ...ice.Any) {
-	m.ProcessStory(append(kit.List(m.Prefix(code.INNER)), arg...)...)
+func (s chain) processInner(m *ice.Message, arg ...string) {
+	ctx.ProcessFloat(m.Message, kit.Simple(ice.GetTypeKey(inner{}), arg)...)
 }
 func (s chain) Find(m *ice.Message, arg ...string) {
 	if nfs.ExistsFile(m, path.Join(m.Option(nfs.PATH), arg[0])) {
 		s.processInner(m, m.Option(nfs.PATH), arg[0], "1")
-		return
+		return // 文件
 	}
 
 	if !nfs.ExistsFile(m, path.Join(m.Option(nfs.PATH), nfs.TAGS)) {
 		s.System(m.Spawn(), m.Option(nfs.PATH), "ctags", "-R")
 	}
-
 	ls := kit.Split(arg[0], "", ":=/()")
-	var meta = struct{ name, kind, value, sub, arg string }{name: ls[0]}
+	meta := struct{ name, kind, value, sub, arg string }{name: ls[0]}
 	for i := 1; i < len(ls); i += 2 {
 		switch ls[i] {
 		case ":":
@@ -45,18 +43,16 @@ func (s chain) Find(m *ice.Message, arg ...string) {
 			meta.arg = ls[i+1]
 		}
 	}
-	if msg := m.Cmd(code.INNER, nfs.TAGS, kit.Select(meta.name, meta.kind, meta.value, meta.sub)); msg.Append(nfs.FILE) != "" {
+	if msg := m.Cmd(inner{}, nfs.TAGS, kit.Select(meta.name, meta.kind, meta.value, meta.sub)); msg.Append(nfs.FILE) != "" {
 		s.processInner(m, msg.Append(nfs.PATH), msg.Append(nfs.FILE), msg.Append(nfs.LINE))
-		return
+		return // 索引
 	}
 
-	if msg := s.System(m.Spawn(), "", cli.MAN, "3", arg[0]); cli.IsSuccess(msg) && !strings.HasPrefix(msg.Result(), "No manual entry for") {
-		s.processInner(m, cli.MAN, arg[0], 3)
-		return
-	}
-	if msg := s.System(m.Spawn(), "", cli.MAN, arg[0]); cli.IsSuccess(msg) && !strings.HasPrefix(msg.Result(), "No manual entry for") {
-		s.processInner(m, cli.MAN, arg[0])
-		return
+	for _, n := range []string{"3", "2", ""} {
+		if msg := s.System(m.Spawn(), "", cli.MAN, n, arg[0]); cli.IsSuccess(msg) && !strings.HasPrefix(msg.Result(), "No manual entry for") {
+			s.processInner(m, cli.MAN, arg[0], n)
+			return // 手册
+		}
 	}
 }
 func (s chain) List(m *ice.Message, arg ...string) {

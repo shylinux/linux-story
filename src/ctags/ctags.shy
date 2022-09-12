@@ -6,6 +6,7 @@ refer `
 `
 
 field web.code.ctags.ctags
+field web.code.ctags.inner
 
 shell `
 wget http://prdownloads.sourceforge.net/ctags/ctags-5.8.tar.gz
