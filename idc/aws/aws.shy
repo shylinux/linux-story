@@ -2,4 +2,6 @@ chapter "aws"
 
 refer `
 主机 https://us-west-2.console.aws.amazon.com/ec2/home?region=us-west-2#Instances:
+终端 https://us-west-2.console.aws.amazon.com/ec2-instance-connect/ssh?connType=standard&instanceId=i-031e45e24a7f20f27&osUser=ec2-user&region=us-west-2&sshPort=22#/
+终端 https://us-west-2.console.aws.amazon.com/cloudshell/home?region=us-west-2#e2d89f95-7923-4b6f-b25b-10df7b6aef78
 `

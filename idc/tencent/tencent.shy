@@ -9,4 +9,5 @@ refer `
 域名 https://console.cloud.tencent.com/domain
 证书 https://console.cloud.tencent.com/ssl
 主机 https://console.cloud.tencent.com/lighthouse/instance/index
+终端 https://workbench.cloud.tencent.com/webshell_lighthouse?instanceId=lhins-kaftw831&region=ap-guangzhou&host=114.132.199.163&platformType=LINUX_UNIX&loginMode=tat&loginType=0
 `
