@@ -7,12 +7,14 @@ import (
 	"shylinux.com/x/ice"
 	"shylinux.com/x/icebergs/base/cli"
 	"shylinux.com/x/icebergs/base/nfs"
+	kit "shylinux.com/x/toolkits"
 )
 
 type inner struct {
 	ice.Code
 	ctags string `name:"ctags" help:"索引"`
-	list  string `name:"inner path=src/@key file=main.go@key line=1 auto" help:"编辑器"`
+	alter string `name:"alter" help:"切换"`
+	list  string `name:"inner path=src/@key file=main.go@key line=1 auto alter" help:"编辑器"`
 }
 
 func (s inner) Tags(m *ice.Message, arg ...string) {
@@ -33,6 +35,20 @@ func (s inner) Tags(m *ice.Message, arg ...string) {
 }
 func (s inner) Man(m *ice.Message, arg ...string) {
 	m.Cmdy(cli.SYSTEM, cli.MAN, arg)
+}
+func (s inner) Alter(m *ice.Message, arg ...string) {
+	switch kit.Ext(arg[1]) {
+	case "c":
+		arg[1] = strings.ReplaceAll(arg[1], ".c", ".h")
+	case "h":
+		arg[1] = strings.ReplaceAll(arg[1], ".h", ".c")
+	default:
+		m.ProcessHold()
+		return
+	}
+	if nfs.ExistsFile(m, path.Join(arg[0], arg[1])) {
+		m.ProcessRewrite(nfs.PATH, arg[0], nfs.FILE, arg[1])
+	}
 }
 func (s inner) List(m *ice.Message, arg ...string) {
 	m.Cmdy("web.code.inner", arg)
