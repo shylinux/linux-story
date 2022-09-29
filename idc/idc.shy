@@ -13,8 +13,8 @@ ssh shy@2021.shylinux.com
 ssh shy@2022.shylinux.com
 `
 refer `
-2022 http://2022.shylinux.com:9022/chat/cmd/web.code.xterm
-2022 http://2022.shylinux.com:9020/chat/cmd/web.code.xterm
+2022 https://2022.dev.shylinux.com/chat/cmd/web.code.xterm
+2022 https://2022.shylinux.com/chat/cmd/web.code.xterm
 `
 
 source tencent/tencent.shy
