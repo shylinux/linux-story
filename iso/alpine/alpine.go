@@ -20,7 +20,7 @@ func (s alpine) Mirrors(m *ice.Message, arg ...string) {
 		return
 	}
 	kit.Rewrite("/etc/apk/repositories", func(text string) string {
-		return strings.ReplaceAll(text, m.Option("from"), m.Option("to"))
+		return strings.Replace(text, m.Option("from"), m.Option("to"), -1)
 	})
 	m.Cmdy(nfs.CAT, "/etc/apk/repositories")
 }

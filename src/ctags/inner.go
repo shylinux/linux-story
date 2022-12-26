@@ -39,9 +39,9 @@ func (s inner) Man(m *ice.Message, arg ...string) {
 func (s inner) Alter(m *ice.Message, arg ...string) {
 	switch kit.Ext(arg[1]) {
 	case "c":
-		arg[1] = strings.ReplaceAll(arg[1], ".c", ".h")
+		arg[1] = strings.Replace(arg[1], ".c", ".h", -1)
 	case "h":
-		arg[1] = strings.ReplaceAll(arg[1], ".h", ".c")
+		arg[1] = strings.Replace(arg[1], ".h", ".c", -1)
 	default:
 		m.ProcessHold()
 		return
