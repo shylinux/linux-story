@@ -18,7 +18,7 @@ type inner struct {
 }
 
 func (s inner) Tags(m *ice.Message, arg ...string) {
-	if !nfs.ExistsFile(m, path.Join(m.Option(nfs.PATH), "tags")) {
+	if !nfs.Exists(m, path.Join(m.Option(nfs.PATH), "tags")) {
 		s.System(m.Spawn(), m.Option(nfs.PATH), "ctags", "-a", "-R")
 	}
 	if m.Cmdy("web.code.inner", "tags", arg); m.Length() > 0 {
@@ -46,7 +46,7 @@ func (s inner) Alter(m *ice.Message, arg ...string) {
 		m.ProcessHold()
 		return
 	}
-	if nfs.ExistsFile(m, path.Join(arg[0], arg[1])) {
+	if nfs.Exists(m, path.Join(arg[0], arg[1])) {
 		m.ProcessRewrite(nfs.PATH, arg[0], nfs.FILE, arg[1])
 	}
 }

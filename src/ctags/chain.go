@@ -21,12 +21,12 @@ func (s chain) processInner(m *ice.Message, arg ...string) {
 	ctx.ProcessFloat(m.Message, kit.Simple(ice.GetTypeKey(inner{}), arg)...)
 }
 func (s chain) Find(m *ice.Message, arg ...string) {
-	if nfs.ExistsFile(m, path.Join(m.Option(nfs.PATH), arg[0])) {
+	if nfs.Exists(m, path.Join(m.Option(nfs.PATH), arg[0])) {
 		s.processInner(m, m.Option(nfs.PATH), arg[0], "1")
 		return // 文件
 	}
 
-	if !nfs.ExistsFile(m, path.Join(m.Option(nfs.PATH), nfs.TAGS)) {
+	if !nfs.Exists(m, path.Join(m.Option(nfs.PATH), nfs.TAGS)) {
 		s.System(m.Spawn(), m.Option(nfs.PATH), "ctags", "-R")
 	}
 	ls := kit.Split(arg[0], "", ":=/()")
