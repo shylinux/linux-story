@@ -25,7 +25,7 @@ func (s inner) Tags(m *ice.Message, arg ...string) {
 		return // 索引
 	}
 	for _, n := range []string{"3", "2", ""} {
-		if msg := s.System(m.Spawn(), "", cli.MAN, n, arg[0]); cli.IsSuccess(msg) && !strings.HasPrefix(msg.Result(), "No manual entry for") {
+		if msg := s.System(m.Spawn(), "", cli.MAN, n, arg[0]); cli.IsSuccess(msg.Message) && !strings.HasPrefix(msg.Result(), "No manual entry for") {
 			m.Push(nfs.PATH, cli.MAN)
 			m.Push(nfs.FILE, arg[0])
 			m.Push(nfs.LINE, n)

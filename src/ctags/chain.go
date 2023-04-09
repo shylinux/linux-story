@@ -49,7 +49,7 @@ func (s chain) Find(m *ice.Message, arg ...string) {
 	}
 
 	for _, n := range []string{"3", "2", ""} {
-		if msg := s.System(m.Spawn(), "", cli.MAN, n, arg[0]); cli.IsSuccess(msg) && !strings.HasPrefix(msg.Result(), "No manual entry for") {
+		if msg := s.System(m.Spawn(), "", cli.MAN, n, arg[0]); cli.IsSuccess(msg.Message) && !strings.HasPrefix(msg.Result(), "No manual entry for") {
 			s.processInner(m, cli.MAN, arg[0], n)
 			return // 手册
 		}

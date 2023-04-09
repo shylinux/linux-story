@@ -6,7 +6,6 @@ import (
 	"shylinux.com/x/ice"
 	"shylinux.com/x/icebergs/base/cli"
 	"shylinux.com/x/icebergs/base/nfs"
-	kit "shylinux.com/x/toolkits"
 )
 
 type alpine struct {
@@ -19,7 +18,7 @@ func (s alpine) Mirrors(m *ice.Message, arg ...string) {
 	if !cli.IsAlpine(m.Message) {
 		return
 	}
-	kit.Rewrite("/etc/apk/repositories", func(text string) string {
+	nfs.Rewrite(m.Message, "/etc/apk/repositories", func(text string) string {
 		return strings.Replace(text, m.Option("from"), m.Option("to"), -1)
 	})
 	m.Cmdy(nfs.CAT, "/etc/apk/repositories")
