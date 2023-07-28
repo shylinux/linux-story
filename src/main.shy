@@ -1,5 +1,6 @@
 title "linux"
 
+source idc/idc.shy
 source ffmpeg/ffmpeg.shy
 
 source gcc/gcc.shy
