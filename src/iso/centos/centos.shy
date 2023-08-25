@@ -1,11 +1,10 @@
-chapter "centos"
+section "centos"
 refer `
 官网 https://www.centos.org/
 文档 https://docs.centos.org/
 源码 http://vault.centos.org/
 `
 
-section "安装环境"
 refer `
 系统 https://mirrors.aliyun.com/centos/8.2.2004/isos/x86_64/CentOS-8.2.2004-x86_64-minimal.iso
 镜像 https://developer.aliyun.com/mirror/centos?spm=a2c6h.13651102.0.0.3e221b11yYVziD

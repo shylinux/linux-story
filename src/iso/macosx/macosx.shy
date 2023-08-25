@@ -1,4 +1,4 @@
-chapter "macosx"
+section "macosx"
 order `
 Trackpad: Tap to click
 Terminal: font-size

@@ -1,9 +1,10 @@
-title "IDC"
+chapter "IDC"
 refer `
 2016 http://2016.shylinux.com:9020
 2020 http://2020.shylinux.com:9020
 2021 http://2021.shylinux.com:9020
 2022 http://2022.shylinux.com:9020
+2023 http://2023.shylinux.com:9020
 9020 http://localhost:9020
 `
 shell `
@@ -11,10 +12,7 @@ ssh shy@2016.shylinux.com
 ssh shy@2020.shylinux.com
 ssh shy@2021.shylinux.com
 ssh shy@2022.shylinux.com
-`
-refer `
-2022 https://2022.dev.shylinux.com/chat/cmd/web.code.xterm
-2022 https://2022.shylinux.com/chat/cmd/web.code.xterm
+ssh shy@2023.shylinux.com
 `
 
 source tencent/tencent.shy
@@ -29,5 +27,5 @@ visudo
 
 ssh-copy-id shy@2022.shylinux.com
 ssh shy@2022.shylinux.com
-ctx_temp=$(mktemp); curl -o $ctx_temp -fsSL https://shylinux.com:443; source $ctx_temp source
+ctx_temp=$(mktemp); curl -o $ctx_temp -fsSL https://shylinux.com; source $ctx_temp source
 `

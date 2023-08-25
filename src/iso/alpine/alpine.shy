@@ -1,11 +1,10 @@
-chapter "alpine"
+section "alpine"
 refer `
 官网 https://www.alpinelinux.org/
 源码 https://git.alpinelinux.org/
 文档 https://docs.alpinelinux.org/user-handbook/0.1a/index.html
 `
 
-section "安装系统"
 refer `
 镜像 https://mirrors.cloud.tencent.com/alpine/v3.9/releases/x86_64/alpine-standard-3.9.0-x86_64.iso
 `

@@ -1,11 +1,10 @@
-chapter "ubuntu"
+section "ubuntu"
 refer `
 官网 https://ubuntu.com/
 文档 https://ubuntu.com/tutorials
 源码 http://archive.ubuntu.com/ubuntu/
 `
 
-section "安装环境"
 refer `
 系统 http://mirrors.aliyun.com/ubuntu-releases/16.04/ubuntu-16.04.7-server-amd64.iso
 镜像 https://developer.aliyun.com/mirror/ubuntu?spm=a2c6h.13651102.0.0.45101b11HWExWZ

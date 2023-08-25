@@ -1,4 +1,4 @@
-chapter "openwrt"
+section "openwrt"
 refer `
 官网 https://openwrt.org/
 文档 https://openwrt.org/docs/start

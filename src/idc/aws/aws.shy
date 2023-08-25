@@ -1,5 +1,4 @@
-chapter "aws"
-
+section "aws"
 refer `
 主机 https://us-west-2.console.aws.amazon.com/ec2/home?region=us-west-2#Instances:
 终端 https://us-west-2.console.aws.amazon.com/ec2-instance-connect/ssh?connType=standard&instanceId=i-031e45e24a7f20f27&osUser=ec2-user&region=us-west-2&sshPort=22#/

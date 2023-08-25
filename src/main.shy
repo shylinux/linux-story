@@ -1,13 +1,3 @@
 title "linux"
-
 source idc/idc.shy
-source ffmpeg/ffmpeg.shy
-
-source gcc/gcc.shy
-source gdb/gdb.shy
-source glibc/glibc.shy
-
-source busybox/busybox.shy
-source kernel/kernel.shy
-source qemu/qemu.shy
-
+source iso/iso.shy
