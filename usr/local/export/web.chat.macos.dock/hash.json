@@ -23,6 +23,15 @@
       "time": "2023-07-31 18:35:32.032"
     }
   },
+  "bfdf11": {
+    "meta": {
+      "_target": [],
+      "icon": "/require/usr/icons/git.png?pod=20230511-linux-story",
+      "index": "web.code.git.status",
+      "name": "status",
+      "time": "2023-08-26 22:39:12.012"
+    }
+  },
   "d1c942": {
     "meta": {
       "icon": "usr/icons/vimer.png",
