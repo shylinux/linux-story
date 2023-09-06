@@ -47,13 +47,5 @@
       "name": "Finder",
       "time": "2023-07-31 18:35:32.032"
     }
-  },
-  "fbeb78": {
-    "meta": {
-      "icon": "usr/icons/git.jpg",
-      "index": "web.code.git.status",
-      "name": "status",
-      "time": "2023-07-31 18:35:32.032"
-    }
   }
 }
