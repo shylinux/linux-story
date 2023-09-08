@@ -13,4 +13,12 @@ shell `
 sed -i 's/dl-cdn.alpinelinux.org/mirrors.tencent.com/g' /etc/apk/repositories && apk update
 TZ=Asia/Shanghai; apk add tzdata && cp /usr/share/zoneinfo/${TZ} /etc/localtime && echo ${TZ} > /etc/timezone
 apk add make git go vim tmux
+apk add git go
+
+git clone https://shylinux.com/x/contexts
+cd contexts && source etc/miss.sh
+ish_miss_serve_log
+
+export ctx_dev=https://shylinux.com; temp=$(mktemp); if curl -h &>/dev/null; then curl -o $temp -fsSL $ctx_dev; else wget -O $temp -q $ctx_dev; fi; source $temp source
+ish_miss_serve_log
 `
