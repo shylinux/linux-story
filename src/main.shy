@@ -1,3 +1,39 @@
 title "linux"
 source idc/idc.shy
 source iso/iso.shy
+chapter "cloud"
+refer `
+域名 https://dc.console.aliyun.com/next/index?spm=5176.12818093.ProductAndService--ali--widget-home-product-recent.dre1.5adc16d0rgdIBl#/domain-list/all
+主机 https://console.cloud.tencent.com/cvm/instance/index?rid=1
+`
+shell `
+useradd shy
+passwd shy
+visudo
+
+ssh-copy-id shy@2023.shylinux.com
+ssh shy@2023.shylinux.com
+
+sudo yum update -y
+sudo yum install -y git
+
+git clone https://shylinux.com/x/contexts
+cd contexts; source etc/miss.sh
+ish_miss_serve_log
+
+wget http://2021.shylinux.com:9020/publish/vim.tar.gz
+ish_miss_prepare_bash
+`
+
+section "防火墙"
+refer `
+2016 https://ecs.console.aliyun.com/securityGroupDetail/region/cn-qingdao/groupId/sg-28wjndzgn/detail/intranetIngress
+2021 https://console.cloud.tencent.com/lighthouse/instance/detail?searchParams=rid%3D1&rid=1&id=lhins-kaftw831&tab=firewall
+2023 https://console.cloud.tencent.com/vpc/security-group/detail/sg-k7afy4bx?rid=1
+`
+order `
+22,80,443
+9020,9022
+2377,5789,7946
+25,143,465,993
+`

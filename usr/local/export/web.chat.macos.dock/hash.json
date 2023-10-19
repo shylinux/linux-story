@@ -25,7 +25,6 @@
   },
   "bfdf11": {
     "meta": {
-      "_target": [],
       "icon": "/require/usr/icons/git.png?pod=20230511-linux-story",
       "index": "web.code.git.status",
       "name": "status",
