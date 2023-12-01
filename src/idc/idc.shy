@@ -17,15 +17,26 @@ ssh shy@2023.shylinux.com
 
 source tencent/tencent.shy
 source aliyun/aliyun.shy
+source huawei/huawei.shy
 source aws/aws.shy
 
+chapter "init"
+section "添加用户"
 shell `
 ssh root@2023.shylinux.com
 useradd shy
 passwd shy
 visudo
+`
+spark inner `
+shy ALL=(ALL) NOPASSWD: ALL
+`
 
+section "安装项目"
+shell `
 ssh shy@2023.shylinux.com
 ssh-copy-id shy@2023.shylinux.com
+ctx_temp=$(mktemp); curl -o $ctx_temp -fsSL https://shylinux.com; source $ctx_temp binary
 ctx_temp=$(mktemp); curl -o $ctx_temp -fsSL https://shylinux.com; source $ctx_temp source
+ish_miss_serve_log
 `

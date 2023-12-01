@@ -1,0 +1,9 @@
+section "华为云"
+refer `
+官网 https://www.huaweicloud.com
+后台 https://console.huaweicloud.com/console/?region=cn-south-1#/home
+`
+
+refer `
+主机 https://console.huaweicloud.com/ecm/?agencyId=27a0692ba86d430f814a9179f12fc824&locale=zh-cn&region=cn-south-1#/ecs/manager/vmList
+`
