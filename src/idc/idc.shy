@@ -1,11 +1,11 @@
 chapter "IDC"
 refer `
+9020 http://localhost:9020
 2016 http://2016.shylinux.com:9020
 2020 http://2020.shylinux.com:9020
 2021 http://2021.shylinux.com:9020
 2022 http://2022.shylinux.com:9020
 2023 http://2023.shylinux.com:9020
-9020 http://localhost:9020
 `
 shell `
 ssh shy@2016.shylinux.com
@@ -20,12 +20,12 @@ source aliyun/aliyun.shy
 source aws/aws.shy
 
 shell `
-ssh root@2022.shylinux.com
+ssh root@2023.shylinux.com
 useradd shy
 passwd shy
 visudo
 
-ssh-copy-id shy@2022.shylinux.com
-ssh shy@2022.shylinux.com
+ssh shy@2023.shylinux.com
+ssh-copy-id shy@2023.shylinux.com
 ctx_temp=$(mktemp); curl -o $ctx_temp -fsSL https://shylinux.com; source $ctx_temp source
 `
