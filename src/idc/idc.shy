@@ -39,4 +39,5 @@ ssh-copy-id shy@2023.shylinux.com
 ctx_temp=$(mktemp); curl -o $ctx_temp -fsSL https://shylinux.com; source $ctx_temp binary
 ctx_temp=$(mktemp); curl -o $ctx_temp -fsSL https://shylinux.com; source $ctx_temp source
 ish_miss_serve_log
+http://2023.shylinux.com:9020
 `
