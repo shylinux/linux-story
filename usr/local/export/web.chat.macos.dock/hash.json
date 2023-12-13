@@ -1,50 +1,50 @@
 {
-  "35c5a0": {
-    "meta": {
-      "icon": "usr/icons/go.png",
-      "index": "web.code.compile",
-      "name": "compile",
-      "time": "2023-07-31 18:35:32.032"
-    }
-  },
-  "84ef07": {
+  "20f1df": {
     "meta": {
       "icon": "usr/icons/Safari.png",
       "index": "web.chat.iframe",
       "name": "Safari",
-      "time": "2023-07-31 18:35:32.032"
+      "time": "2023-12-13 11:17:35.472"
     }
   },
-  "ba5645": {
+  "7e06d3": {
+    "meta": {
+      "icon": "usr/icons/git.png",
+      "index": "web.code.git.status",
+      "name": "git",
+      "time": "2023-12-13 11:17:35.473"
+    }
+  },
+  "9dabd6": {
     "meta": {
       "icon": "usr/icons/Terminal.png",
       "index": "web.code.xterm",
       "name": "Terminal",
-      "time": "2023-07-31 18:35:32.032"
+      "time": "2023-12-13 11:17:35.472"
     }
   },
-  "bfdf11": {
+  "c582f6": {
     "meta": {
-      "icon": "/require/usr/icons/git.png?pod=20230511-linux-story",
-      "index": "web.code.git.status",
-      "name": "status",
-      "time": "2023-08-26 22:39:12.012"
+      "icon": "usr/icons/go.png",
+      "index": "web.code.compile",
+      "name": "go",
+      "time": "2023-12-13 11:17:35.472"
     }
   },
-  "d1c942": {
+  "e53362": {
     "meta": {
       "icon": "usr/icons/vimer.png",
       "index": "web.code.vimer",
       "name": "vimer",
-      "time": "2023-07-31 18:35:32.032"
+      "time": "2023-12-13 11:17:35.473"
     }
   },
-  "f995d8": {
+  "e9a85d": {
     "meta": {
       "icon": "usr/icons/Finder.png",
       "index": "web.chat.macos.finder",
       "name": "Finder",
-      "time": "2023-07-31 18:35:32.032"
+      "time": "2023-12-13 11:17:35.472"
     }
   }
 }
