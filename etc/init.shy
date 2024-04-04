@@ -1,5 +1,5 @@
 ~web
-	config space icons "src/linux.png"
+	space icons "src/linux.png"
 	space main desktop
 	serve main desktop
 ~ssh
