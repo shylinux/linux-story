@@ -1,6 +1,4 @@
 ~web
-	space icons "src/linux.png"
 	space main desktop
-	serve main desktop
 ~ssh
 	source local.shy

@@ -12,4 +12,6 @@ import (
 	_ "shylinux.com/x/linux-story/src/qemu"
 )
 
+func init() { ice.Info.NodeIcon = "src/kernel/linux.png" }
+
 func main() { print(ice.Run()) }
