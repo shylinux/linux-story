@@ -23,12 +23,12 @@
       "time": "2023-12-13 11:17:35.471"
     }
   },
-  "c9777e": {
+  "c10d6e": {
     "meta": {
-      "icon": "usr/icons/Grapher.png",
-      "index": "web.wiki.draw",
-      "name": "Grapher",
-      "time": "2023-12-13 11:17:35.471"
+      "icon": "usr/icons/Messages.png",
+      "index": "web.chat.message",
+      "name": "Messages",
+      "time": "2024-04-22 11:59:24.507"
     }
   }
 }
