@@ -7,4 +7,7 @@ import (
 
 func main() { print(ice.Run()) }
 
-func init() { ice.Info.NodeIcon = "src/system/linux.png" }
+func init() {
+	ice.Info.NodeIcon = "src/system/linux.png"
+	ice.Info.NodeMain = "web.code.system.studio"
+}

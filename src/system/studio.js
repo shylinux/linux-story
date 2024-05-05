@@ -3,7 +3,7 @@ Volcanos(chat.ONIMPORT, {
 	_project: function(can, msg, target) {
 		can.onimport.itemlist(can, msg.Table(function(value) {
 			value.icon = can.base.endWith(value.path, nfs.PS)? icon.path: icon.file
-			value.nick = can.core.Split(value.path, nfs.PS).pop()
+			value.nick = can.core.Split(value.path, nfs.PS).pop()+` <span style="color:var(--disable-fg-color)">(${value.size})</span>`
 			value._select = (can.db.hash[0]||"").indexOf(value.path) == 0
 			return value
 		}), function(event, value, show, target) {

@@ -18,9 +18,6 @@ type dir struct {
 	list string `name:"list path auto"`
 }
 
-func (s dir) Trash(m *ice.Message, arg ...string) {
-	m.Trash(m.Option(nfs.PATH))
-}
 func (s dir) Upload(m *ice.Message, arg ...string) {
 	if strings.HasSuffix(m.Option(nfs.PATH), nfs.PS) {
 		m.UploadSave(m.Option(nfs.PATH))
@@ -28,10 +25,15 @@ func (s dir) Upload(m *ice.Message, arg ...string) {
 		m.UploadSave(path.Dir(m.Option(nfs.PATH)))
 	}
 }
+func (s dir) Trash(m *ice.Message, arg ...string) {
+	m.Trash(m.Option(nfs.PATH))
+}
 func (s dir) List(m *ice.Message, arg ...string) {
 	if len(arg) > 0 && !strings.HasSuffix(arg[0], nfs.PS) {
-		if nfs.IsSourceFile(m.Message, kit.Ext(arg[0])) {
+		if nfs.IsSourceFile(m.Message, kit.Ext(arg[0])) || kit.HasPrefix(arg[0], "/etc/") {
 			s.cmds(m, web.CODE_VIMER, path.Dir(arg[0]), path.Base(arg[0]))
+		} else if kit.IsIn(kit.Ext(arg[0]), "ico") {
+			s.cmds(m, "web.wiki.feel", path.Dir(arg[0])+nfs.PS, path.Base(arg[0]))
 		} else {
 			s.cmds(m, ice.GetTypeKey(hex{}), arg...)
 			s.cmds(m, web.CODE_XTERM, mdb.TYPE, cli.SH, nfs.PATH, arg[0])
@@ -46,7 +48,6 @@ func (s dir) List(m *ice.Message, arg ...string) {
 func init() { ice.CodeCtxCmd(dir{}) }
 
 func (s dir) cmds(m *ice.Message, cmd string, arg ...string) {
-	m.Cmdy(ctx.COMMAND, cmd)
-	m.Push(ctx.ARGS, kit.Format(arg))
+	m.Cmdy(ctx.COMMAND, cmd).Push(ctx.ARGS, kit.Format(arg))
 	m.Push(ctx.STYLE, html.OUTPUT)
 }
