@@ -1,6 +1,7 @@
 package system
 
 import (
+	"encoding/base64"
 	"path"
 	"strings"
 
@@ -19,7 +20,7 @@ type dir struct {
 }
 
 func (s dir) Upload(m *ice.Message, arg ...string) {
-	if strings.HasSuffix(m.Option(nfs.PATH), nfs.PS) {
+	if strings.HasSuffix(m.OptionDefault(nfs.PATH, nfs.PS), nfs.PS) {
 		m.UploadSave(m.Option(nfs.PATH))
 	} else {
 		m.UploadSave(path.Dir(m.Option(nfs.PATH)))
@@ -28,26 +29,26 @@ func (s dir) Upload(m *ice.Message, arg ...string) {
 func (s dir) Trash(m *ice.Message, arg ...string) {
 	m.Trash(m.Option(nfs.PATH))
 }
+func (s dir) Show(m *ice.Message, arg ...string) {
+	m.ProcessFloat(hex{}, m.Option(nfs.PATH), arg...)
+}
 func (s dir) List(m *ice.Message, arg ...string) {
 	if len(arg) > 0 && !strings.HasSuffix(arg[0], nfs.PS) {
-		if nfs.IsSourceFile(m.Message, kit.Ext(arg[0])) || kit.HasPrefix(arg[0], "/etc/") {
+		if nfs.IsSourceFile(m.Message, kit.Ext(arg[0])) || kit.HasPrefix(arg[0], "/etc/", "/proc/") {
 			s.cmds(m, web.CODE_VIMER, path.Dir(arg[0]), path.Base(arg[0]))
-		} else if kit.IsIn(kit.Ext(arg[0]), "ico") {
-			s.cmds(m, "web.wiki.feel", path.Dir(arg[0])+nfs.PS, path.Base(arg[0]))
+		} else if html.IsImage(arg[0], "") {
+			m.Echo(`<img src="data:image/%s;base64,%s" title='%s' />`, kit.Ext(arg[0]), base64.StdEncoding.EncodeToString([]byte(m.Cmdx(nfs.CAT, arg[0]))), arg[0])
 		} else {
 			s.cmds(m, ice.GetTypeKey(hex{}), arg...)
 			s.cmds(m, web.CODE_XTERM, mdb.TYPE, cli.SH, nfs.PATH, arg[0])
 		}
 	} else {
-		m.Cmdy(nfs.DIR, kit.Select(nfs.PS, arg, 0))
-		m.PushAction(s.Upload, s.Trash)
-		m.SortStr(nfs.PATH)
+		m.Cmdy(nfs.DIR, kit.Select(nfs.PS, arg, 0)).PushAction(s.Show, s.Trash).Action(s.Upload).SortStr(nfs.PATH)
 	}
 }
 
 func init() { ice.CodeCtxCmd(dir{}) }
 
 func (s dir) cmds(m *ice.Message, cmd string, arg ...string) {
-	m.Cmdy(ctx.COMMAND, cmd).Push(ctx.ARGS, kit.Format(arg))
-	m.Push(ctx.STYLE, html.OUTPUT)
+	m.Cmdy(ctx.COMMAND, cmd).Push(ctx.ARGS, kit.Format(arg)).Push(ctx.STYLE, html.OUTPUT)
 }

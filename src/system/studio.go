@@ -1,15 +1,20 @@
 package system
 
-import "shylinux.com/x/ice"
+import (
+	"shylinux.com/x/ice"
+	"shylinux.com/x/icebergs/base/ctx"
+	"shylinux.com/x/icebergs/base/nfs"
+	kit "shylinux.com/x/toolkits"
+)
 
 type studio struct {
-	tools string `data:"web.code.system.port,web.code.system.proc,web.code.system.user,web.code.system.disk"`
-	list  string `name:"list refresh" icon:"linux.png"`
+	list string `name:"list refresh" icon:"linux.png"`
 }
 
 func (s studio) List(m *ice.Message, arg ...string) {
 	if m.Cmdy(dir{}, arg); len(arg) == 0 {
-		m.Display("")
+		m.StatusTimeCount(nfs.VERSION, m.SystemCmdx("uname", "-r")).Display("")
+		kit.If(m.Config(ctx.TOOLS) == "", func() { m.Toolkit(port{}, proc{}, user{}, disk{}) })
 	}
 }
 
