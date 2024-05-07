@@ -31,12 +31,12 @@
       "time": "2024-04-22 11:59:24.507"
     }
   },
-  "e206a54e97690cce50cc872dd70ee896": {
+  "c944634550c698febdd9c868db908d9d": {
     "meta": {
-      "icon": "src/system/linux.png",
+      "icon": "src/system/studio.png",
       "index": "web.code.system.studio",
-      "name": "linux",
-      "time": "2024-05-07 22:27:02.392"
+      "name": "studio",
+      "time": "2024-05-08 00:22:13.544"
     }
   }
 }
