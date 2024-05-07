@@ -1,10 +1,7 @@
 package system
 
 import (
-	"strings"
-
 	"shylinux.com/x/ice"
-	"shylinux.com/x/icebergs/base/cli"
 	"shylinux.com/x/icebergs/base/web/html"
 	kit "shylinux.com/x/toolkits"
 )
@@ -15,7 +12,7 @@ type proc struct {
 
 func (s proc) List(m *ice.Message, arg ...string) {
 	head := []string{}
-	kit.For(kit.SplitLine(m.Cmdx(cli.SYSTEM, "ps", "aux")), func(text string, index int) {
+	kit.For(kit.SplitLine(m.SystemCmdx("ps", "aux")), func(text string, index int) {
 		if index == 0 {
 			head = kit.SplitWord(text)
 			return
@@ -28,7 +25,7 @@ func (s proc) List(m *ice.Message, arg ...string) {
 				cmds = append(cmds, text)
 			}
 		})
-		m.Push(head[len(head)-1], strings.Join(cmds, " "))
+		m.Push(head[len(head)-1], kit.JoinWord(cmds...))
 	})
 	m.RewriteAppend(func(value string, key string, index int) string {
 		switch key {
@@ -37,10 +34,8 @@ func (s proc) List(m *ice.Message, arg ...string) {
 		}
 		return value
 	})
-	m.Action(html.FILTER)
-	m.StatusTimeCountStats("USER")
-	m.SortIntR("RSS")
-	m.Option("table.checkbox", "true")
+	m.Action(html.FILTER).StatusTimeCountStats("USER").SortIntR("RSS")
+	// m.Options("table.checkbox", "true")
 }
 
 func init() { ice.CodeCtxCmd(proc{}) }

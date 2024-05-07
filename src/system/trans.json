@@ -3,6 +3,8 @@
 	"disk": "磁盘",
 	"proc": "进程",
 	"port": "端口",
+	"dir": "目录",
+	"hex": "文件",
 	"icons": {},
 	"input": {},
 	"value": {}

@@ -33,22 +33,22 @@ func (s dir) Show(m *ice.Message, arg ...string) {
 	m.ProcessFloat(hex{}, m.Option(nfs.PATH), arg...)
 }
 func (s dir) List(m *ice.Message, arg ...string) {
-	if len(arg) > 0 && !strings.HasSuffix(arg[0], nfs.PS) {
-		if nfs.IsSourceFile(m.Message, kit.Ext(arg[0])) || kit.HasPrefix(arg[0], "/etc/", "/proc/") {
-			s.cmds(m, web.CODE_VIMER, path.Dir(arg[0]), path.Base(arg[0]))
-		} else if html.IsImage(arg[0], "") {
+	if len(arg) == 0 || strings.HasSuffix(arg[0], nfs.PS) {
+		m.Cmdy(nfs.DIR, kit.Select(nfs.PS, arg, 0), "time,path,type,size").PushAction(s.Show, s.Trash).Action(s.Upload).Sort(nfs.PATH)
+	} else {
+		if html.IsImage(arg[0], "") {
 			m.Echo(`<img src="data:image/%s;base64,%s" title='%s' />`, kit.Ext(arg[0]), base64.StdEncoding.EncodeToString([]byte(m.Cmdx(nfs.CAT, arg[0]))), arg[0])
+		} else if nfs.IsSourceFile(m.Message, kit.Ext(arg[0])) || kit.HasPrefix(arg[0], "/etc/", "/proc/") {
+			s.cmds(m, web.CODE_VIMER, path.Dir(arg[0]), path.Base(arg[0]))
 		} else {
-			s.cmds(m, ice.GetTypeKey(hex{}), arg...)
+			s.cmds(m, hex{}, arg...)
 			s.cmds(m, web.CODE_XTERM, mdb.TYPE, cli.SH, nfs.PATH, arg[0])
 		}
-	} else {
-		m.Cmdy(nfs.DIR, kit.Select(nfs.PS, arg, 0)).PushAction(s.Show, s.Trash).Action(s.Upload).SortStr(nfs.PATH)
 	}
 }
 
 func init() { ice.CodeCtxCmd(dir{}) }
 
-func (s dir) cmds(m *ice.Message, cmd string, arg ...string) {
-	m.Cmdy(ctx.COMMAND, cmd).Push(ctx.ARGS, kit.Format(arg)).Push(ctx.STYLE, html.OUTPUT)
+func (s dir) cmds(m *ice.Message, cmd ice.Any, arg ...string) {
+	m.Cmdy(ctx.COMMAND, ice.GetTypeKey(cmd)).Push(ctx.ARGS, kit.Format(arg)).Push(ctx.STYLE, html.OUTPUT)
 }
