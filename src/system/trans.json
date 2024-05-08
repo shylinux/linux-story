@@ -1,11 +1,15 @@
 {
-	"user": "用户",
-	"disk": "磁盘",
-	"proc": "进程",
 	"port": "端口",
+	"proc": "进程",
+	"disk": "磁盘",
+	"user": "用户",
+	"group": "用户组",
+	"favor": "收藏夹",
 	"dir": "目录",
 	"hex": "文件",
 	"icons": {},
-	"input": {},
+	"input": {
+		"comment": "备注"
+	},
 	"value": {}
 }

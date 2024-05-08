@@ -33,7 +33,9 @@ func (s dir) Show(m *ice.Message, arg ...string) {
 	m.ProcessFloat(hex{}, m.Option(nfs.PATH), arg...)
 }
 func (s dir) List(m *ice.Message, arg ...string) {
-	if len(arg) == 0 || strings.HasSuffix(arg[0], nfs.PS) {
+	if len(arg) > 0 && arg[0] == "/dev/" {
+		return
+	} else if len(arg) == 0 || strings.HasSuffix(arg[0], nfs.PS) {
 		m.Cmdy(nfs.DIR, kit.Select(nfs.PS, arg, 0), "time,path,type,size").PushAction(s.Show, s.Trash).Action(s.Upload).Sort(nfs.PATH)
 	} else {
 		if html.IsImage(arg[0], "") {
@@ -42,7 +44,15 @@ func (s dir) List(m *ice.Message, arg ...string) {
 			s.cmds(m, web.CODE_VIMER, path.Dir(arg[0]), path.Base(arg[0]))
 		} else {
 			s.cmds(m, hex{}, arg...)
-			s.cmds(m, web.CODE_XTERM, mdb.TYPE, cli.SH, nfs.PATH, arg[0])
+			if kit.HasPrefix(arg[0],
+				"/bin/", "/sbin/",
+				"/usr/bin/", "/usr/sbin/",
+				"/usr/local/bin", "/usr/local/sbin",
+			) {
+				s.cmds(m, web.CODE_XTERM, mdb.TYPE, cli.SH, mdb.TEXT, kit.JoinWord(arg[0], "--help"), nfs.PATH, arg[0])
+			} else {
+				s.cmds(m, web.CODE_XTERM, mdb.TYPE, cli.SH, nfs.PATH, arg[0])
+			}
 		}
 	}
 }

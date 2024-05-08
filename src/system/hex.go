@@ -1,6 +1,7 @@
 package system
 
 import (
+	"debug/elf"
 	"debug/macho"
 	"encoding/base64"
 	"os"
@@ -25,7 +26,15 @@ func (s hex) List(m *ice.Message, arg ...string) {
 		m.Cmdy(nfs.CAT, arg[0])
 	} else if f, e := os.Open(arg[0]); !m.Warn(e) {
 		defer f.Close()
-		if o, e := macho.NewFile(f); e == nil {
+		if o, e := elf.NewFile(f); e == nil {
+			for _, v := range o.Sections {
+				m.Push("type", v.Type.String())
+				m.Push("name", v.Name)
+				m.Push("addr", kit.Format("%0#X", v.Addr))
+				m.Push("offset", kit.Format("%0#X", v.Offset))
+				m.Push("size", kit.FmtSize(v.Size))
+			}
+		} else if o, e := macho.NewFile(f); e == nil {
 			for _, v := range o.Sections {
 				m.Push("type", v.Seg)
 				m.Push("name", v.Name)
@@ -33,13 +42,13 @@ func (s hex) List(m *ice.Message, arg ...string) {
 				m.Push("offset", kit.Format("%0#X", v.Offset))
 				m.Push("size", kit.FmtSize(v.Size))
 			}
-			return
-		}
-		buf := make([]byte, 128)
-		n, _ := f.Read(buf)
-		for i := 0; i < n; i++ {
-			kit.If(i%8 == 0, func() { m.Push("byte", i) })
-			m.Push(kit.Format(i%8), kit.Format("%02X", buf[i]))
+		} else {
+			buf := make([]byte, 128)
+			n, _ := f.Read(buf)
+			for i := 0; i < n; i++ {
+				kit.If(i%8 == 0, func() { m.Push("byte", i) })
+				m.Push(kit.Format(i%8), kit.Format("%02X", buf[i]))
+			}
 		}
 	}
 }
