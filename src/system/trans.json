@@ -5,11 +5,13 @@
 	"user": "用户",
 	"group": "用户组",
 	"favor": "收藏夹",
+	"whois": "地理位置",
+	"unicode": "字符编码",
+	"service": "服务",
+	"yum": "软件包",
 	"dir": "目录",
 	"hex": "文件",
-	"icons": {},
 	"input": {
 		"comment": "备注"
-	},
-	"value": {}
+	}
 }

@@ -20,7 +20,7 @@ func (s unicode) List(m *ice.Message, arg ...string) {
 		begin, _ := strconv.ParseInt(value["begin"], 16, 64)
 		end, _ := strconv.ParseInt(value["end"], 16, 64)
 		for i := begin; i <= end; i++ {
-			m.Push(kit.Format("%X", i%16), kit.Format("<span style='font-size:48px;'>%s<span>", string(i)))
+			m.Push(kit.Format("%X", i%16), kit.Format("<span style='font-size:32px;'>%s<span>", string(i)))
 			m.Push(kit.Format("%X", i%16), kit.Format("%X", i))
 		}
 	})

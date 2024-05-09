@@ -23,12 +23,16 @@ func (s port) List(m *ice.Message, arg ...string) {
 		m.Push(mdb.TYPE, ls[0]).Push(mdb.STATUS, ls[5])
 		m.Push(tcp.PORT, kit.Select("", kit.Split(ls[3], ":"), -1))
 		m.Push("local", ls[3]).Push("remote", ls[4])
-		m.Push(aaa.IP, kit.Select("::", kit.Split(ls[4], ":*"), 0))
+		if ls[0] == "tcp6" {
+			m.Push(aaa.IP, "")
+		} else {
+			m.Push(aaa.IP, kit.Select("::", kit.Split(ls[4], ":*"), 0))
+		}
 		_ls := kit.Split(ls[6], "/:")
 		m.Push(cli.PID, kit.Select("", _ls, 0))
 		m.Push(cli.CMD, kit.Select("", _ls, 1))
 	})
-	s.getwhois(m).StatusTimeCountStats(mdb.TYPE, mdb.STATUS, cli.CMD)
+	s.getwhois(m).StatusTimeCountStats(mdb.TYPE, mdb.STATUS, cli.CMD, aaa.LOCATION)
 	m.Sort("status,location,port,local", []string{"LISTEN", "ESTABLISHED", "TIME_WAIT"}, ice.STR_R, ice.INT)
 }
 
@@ -38,7 +42,7 @@ func (s port) getwhois(m *ice.Message) *ice.Message {
 	list := map[string]string{}
 	m.Table(func(value ice.Maps) {
 		p, ok := list[value[aaa.IP]]
-		if !ok && !kit.HasPrefix(value[aaa.IP], "::", "0.0.", "127.0.") {
+		if !ok && !kit.HasPrefix(value[aaa.IP], "0.0.", "127.0.") && value[mdb.TYPE] != "tcp6" {
 			if p = m.Cmd(s.whois, value[aaa.IP]).Append(aaa.LOCATION); p == "" {
 				p = m.PublicIP(value[aaa.IP])
 				m.Cmd(s.whois, s.whois.Create, aaa.IP, value[aaa.IP], aaa.LOCATION, p)

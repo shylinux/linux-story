@@ -11,8 +11,7 @@ type disk struct {
 
 func (s disk) List(m *ice.Message, arg ...string) {
 	m.Split(kit.ReplaceAll(m.SystemCmdx("df", "-h"),
-		"%iused", "iusedp", "Mounted on", "Mounted_on",
-		"map auto_home", "map_auto_home",
+		"%iused", "iusedp", "Mounted on", "Mounted_on", "map auto_home", "map_auto_home",
 	)).SortIntR("Size")
 }
 
