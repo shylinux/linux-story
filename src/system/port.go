@@ -1,62 +1,51 @@
 package system
 
 import (
-	"strconv"
-
 	"shylinux.com/x/ice"
+	"shylinux.com/x/icebergs/base/aaa"
+	"shylinux.com/x/icebergs/base/cli"
 	"shylinux.com/x/icebergs/base/mdb"
-	"shylinux.com/x/icebergs/base/nfs"
+	"shylinux.com/x/icebergs/base/tcp"
 	kit "shylinux.com/x/toolkits"
 )
 
 type port struct {
-	list string `name:"list port auto"`
+	whois whois
+	list  string `name:"list port auto"`
 }
 
 func (s port) List(m *ice.Message, arg ...string) {
-	s.tcp4(m)
-	s.tcp6(m)
-	m.StatusTimeCountStats(mdb.TYPE, mdb.STATUS).Sort("status,port,local", []string{"LISTEN", "ESTABLISHED", "TIME_WAIT"}, ice.INT)
+	kit.For(kit.SplitLine(m.SystemCmdx(SUDO, "netstat", "-antp")), func(text string, index int) {
+		if index < 2 {
+			return
+		}
+		ls := kit.SplitWord(text)
+		m.Push(mdb.TYPE, ls[0]).Push(mdb.STATUS, ls[5])
+		m.Push(tcp.PORT, kit.Select("", kit.Split(ls[3], ":"), -1))
+		m.Push("local", ls[3]).Push("remote", ls[4])
+		m.Push(aaa.IP, kit.Select("::", kit.Split(ls[4], ":*"), 0))
+		_ls := kit.Split(ls[6], "/:")
+		m.Push(cli.PID, kit.Select("", _ls, 0))
+		m.Push(cli.CMD, kit.Select("", _ls, 1))
+	})
+	s.getwhois(m).StatusTimeCountStats(mdb.TYPE, mdb.STATUS, cli.CMD)
+	m.Sort("status,location,port,local", []string{"LISTEN", "ESTABLISHED", "TIME_WAIT"}, ice.STR_R, ice.INT)
 }
 
 func init() { ice.CodeCtxCmd(port{}) }
 
-func (s port) tcp4(m *ice.Message, arg ...string) {
-	m.Spawn().Split(m.Cmdx(nfs.CAT, "/proc/net/tcp")).Table(func(value ice.Maps) {
-		ls := kit.Split(value["local_address"], ":")
-		m.Push(mdb.TYPE, "tcp4").Push(mdb.STATUS, s.trans(value["st"]))
-		m.Push("port", s.parse(ls[1]))
-		m.Push("local", kit.Format("%d.%d.%d.%d:%d", s.parse(ls[0][6:8]), s.parse(ls[0][4:6]), s.parse(ls[0][2:4]), s.parse(ls[0][:2]), s.parse(ls[1])))
-		ls = kit.Split(value["rem_address"], ":")
-		m.Push("remote", kit.Format("%d.%d.%d.%d:%d", s.parse(ls[0][6:8]), s.parse(ls[0][4:6]), s.parse(ls[0][2:4]), s.parse(ls[0][:2]), s.parse(ls[1])))
-		m.Push("ip", kit.Format("%d.%d.%d.%d", s.parse(ls[0][6:8]), s.parse(ls[0][4:6]), s.parse(ls[0][2:4]), s.parse(ls[0][:2])))
+func (s port) getwhois(m *ice.Message) *ice.Message {
+	list := map[string]string{}
+	m.Table(func(value ice.Maps) {
+		p, ok := list[value[aaa.IP]]
+		if !ok && !kit.HasPrefix(value[aaa.IP], "::", "0.0.", "127.0.") {
+			if p = m.Cmd(s.whois, value[aaa.IP]).Append(aaa.LOCATION); p == "" {
+				p = m.PublicIP(value[aaa.IP])
+				m.Cmd(s.whois, s.whois.Create, aaa.IP, value[aaa.IP], aaa.LOCATION, p)
+			}
+			list[value[aaa.IP]] = p
+		}
+		m.Push(aaa.LOCATION, p)
 	})
-}
-func (s port) tcp6(m *ice.Message, arg ...string) {
-	m.Spawn().Split(m.Cmdx(nfs.CAT, "/proc/net/tcp6")).Table(func(value ice.Maps) {
-		ls := kit.Split(value["local_address"], ":")
-		m.Push(mdb.TYPE, "tcp6").Push(mdb.STATUS, s.trans(value["st"]))
-		m.Push("port", s.parse(ls[1]))
-		m.Push("local", kit.Format("%d.%d.%d.%d:%d", s.parse(ls[0][30:32]), s.parse(ls[0][28:30]), s.parse(ls[0][26:28]), s.parse(ls[0][24:26]), s.parse(ls[1])))
-		ls = kit.Split(value["remote_address"], ":")
-		m.Push("remote", kit.Format("%d.%d.%d.%d:%d", s.parse(ls[0][30:32]), s.parse(ls[0][28:30]), s.parse(ls[0][26:28]), s.parse(ls[0][24:26]), s.parse(ls[1])))
-		m.Push("ip", kit.Format("%d.%d.%d.%d", s.parse(ls[0][30:32]), s.parse(ls[0][28:30]), s.parse(ls[0][26:28]), s.parse(ls[0][24:26])))
-	})
-}
-func (s port) parse(str string) int64 {
-	port, _ := strconv.ParseInt(str, 16, 32)
-	return port
-}
-func (s port) trans(str string) string {
-	return kit.Select(str, map[string]string{
-		"01": "ESTABLISHED",
-		"02": "TCP_SYNC_SEND",
-		"03": "TCP_SYNC_RECV",
-		"04": "TCP_FIN_WAIT1",
-		"05": "TCP_FIN_WAIT2",
-		"06": "TIME_WAIT",
-		"07": "TCP_CLOSE",
-		"08": "TCP_CLOSE_WAIT",
-		"0A": "LISTEN",
-	}[str])
+	return m
 }

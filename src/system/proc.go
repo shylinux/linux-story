@@ -1,7 +1,11 @@
 package system
 
 import (
+	"path"
+	"strings"
+
 	"shylinux.com/x/ice"
+	"shylinux.com/x/icebergs/base/cli"
 	"shylinux.com/x/icebergs/base/web/html"
 	kit "shylinux.com/x/toolkits"
 )
@@ -25,6 +29,11 @@ func (s proc) List(m *ice.Message, arg ...string) {
 				cmds = append(cmds, text)
 			}
 		})
+		if strings.HasPrefix(cmds[0], "[") {
+			m.Push(cli.CMD, cmds[0])
+		} else {
+			m.Push(cli.CMD, strings.TrimSuffix(path.Base(cmds[0]), ":"))
+		}
 		m.Push(head[len(head)-1], kit.JoinWord(cmds...))
 	})
 	m.RewriteAppend(func(value string, key string, index int) string {

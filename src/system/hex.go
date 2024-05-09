@@ -20,7 +20,7 @@ type hex struct {
 
 func (s hex) List(m *ice.Message, arg ...string) {
 	if len(arg) == 0 || strings.HasSuffix(arg[0], nfs.PS) {
-		m.Cmdy(nfs.DIR, arg)
+		m.Cmdy(nfs.DIR, arg).PushAction()
 	} else if html.IsImage(arg[0], "") {
 		m.Echo(`<img src="data:image/%s;base64,%s" title='%s' />`, kit.Ext(arg[0]), base64.StdEncoding.EncodeToString([]byte(m.Cmdx(nfs.CAT, arg[0]))), arg[0])
 	} else if nfs.IsSourceFile(m.Message, kit.Ext(arg[0])) {
