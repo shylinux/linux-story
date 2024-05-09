@@ -19,41 +19,21 @@ type dir struct {
 	list string `name:"list path auto"`
 }
 
-func (s dir) Upload(m *ice.Message, arg ...string) {
-	if strings.HasSuffix(m.OptionDefault(nfs.PATH, nfs.PS), nfs.PS) {
-		m.UploadSave(m.Option(nfs.PATH))
-	} else {
-		m.UploadSave(path.Dir(m.Option(nfs.PATH)))
-	}
-}
-func (s dir) Trash(m *ice.Message, arg ...string) {
-	m.Trash(m.Option(nfs.PATH))
-}
-func (s dir) Show(m *ice.Message, arg ...string) {
-	m.ProcessFloat(hex{}, m.Option(nfs.PATH), arg...)
-}
+func (s dir) Upload(m *ice.Message, arg ...string) { m.UploadSave(m.Option(nfs.PATH)) }
+func (s dir) Trash(m *ice.Message, arg ...string)  { m.Trash(m.Option(nfs.PATH)) }
 func (s dir) List(m *ice.Message, arg ...string) {
 	if len(arg) > 0 && arg[0] == "/dev/" {
 		return
 	} else if len(arg) == 0 || strings.HasSuffix(arg[0], nfs.PS) {
-		m.Cmdy(nfs.DIR, kit.Select(nfs.PS, arg, 0), "time,path,type,size").PushAction(s.Show, s.Trash).Action(s.Upload).Sort(nfs.PATH)
+		m.Cmdy(nfs.DIR, kit.Select(nfs.PS, arg, 0), "time,path,type,size").PushAction(s.Trash).Action(s.Upload).Sort(nfs.PATH)
+	} else if html.IsImage(arg[0], "") {
+		m.Echo(`<img src="data:image/%s;base64,%s" title='%s' />`, kit.Ext(arg[0]), base64.StdEncoding.EncodeToString([]byte(m.Cmdx(nfs.CAT, arg[0]))), arg[0])
+	} else if kit.HasPrefix(arg[0], "/etc/", "/proc/") || nfs.IsSourceFile(m.Message, kit.Ext(arg[0])) {
+		s.cmds(m, web.CODE_VIMER, path.Dir(arg[0]), path.Base(arg[0]))
+	} else if s.cmds(m, hex{}, arg...); kit.HasPrefix(arg[0], "/bin/", "/sbin/", "/usr/bin/", "/usr/sbin/", "/usr/local/bin", "/usr/local/sbin") {
+		s.cmds(m, web.CODE_XTERM, mdb.TYPE, cli.SH, mdb.TEXT, kit.JoinWord(arg[0], "--help"), nfs.PATH, arg[0])
 	} else {
-		if html.IsImage(arg[0], "") {
-			m.Echo(`<img src="data:image/%s;base64,%s" title='%s' />`, kit.Ext(arg[0]), base64.StdEncoding.EncodeToString([]byte(m.Cmdx(nfs.CAT, arg[0]))), arg[0])
-		} else if nfs.IsSourceFile(m.Message, kit.Ext(arg[0])) || kit.HasPrefix(arg[0], "/etc/", "/proc/") {
-			s.cmds(m, web.CODE_VIMER, path.Dir(arg[0]), path.Base(arg[0]))
-		} else {
-			s.cmds(m, hex{}, arg...)
-			if kit.HasPrefix(arg[0],
-				"/bin/", "/sbin/",
-				"/usr/bin/", "/usr/sbin/",
-				"/usr/local/bin", "/usr/local/sbin",
-			) {
-				s.cmds(m, web.CODE_XTERM, mdb.TYPE, cli.SH, mdb.TEXT, kit.JoinWord(arg[0], "--help"), nfs.PATH, arg[0])
-			} else {
-				s.cmds(m, web.CODE_XTERM, mdb.TYPE, cli.SH, nfs.PATH, arg[0])
-			}
-		}
+		s.cmds(m, web.CODE_XTERM, mdb.TYPE, cli.SH, nfs.PATH, arg[0])
 	}
 }
 

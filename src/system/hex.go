@@ -3,6 +3,7 @@ package system
 import (
 	"debug/elf"
 	"debug/macho"
+	"debug/pe"
 	"encoding/base64"
 	"os"
 	"strings"
@@ -42,12 +43,19 @@ func (s hex) List(m *ice.Message, arg ...string) {
 				m.Push("offset", kit.Format("%0#X", v.Offset))
 				m.Push("size", kit.FmtSize(v.Size))
 			}
+		} else if o, e := pe.NewFile(f); e == nil {
+			for _, v := range o.Sections {
+				m.Push("name", v.Name)
+				m.Push("addr", kit.Format("%0#X", v.VirtualAddress))
+				m.Push("offset", kit.Format("%0#X", v.Offset))
+				m.Push("size", kit.FmtSize(v.VirtualSize))
+			}
 		} else {
 			buf := make([]byte, 128)
 			n, _ := f.Read(buf)
 			for i := 0; i < n; i++ {
-				kit.If(i%8 == 0, func() { m.Push("byte", i) })
-				m.Push(kit.Format(i%8), kit.Format("%02X", buf[i]))
+				kit.If(i%16 == 0, func() { m.Push("byte", i) })
+				m.Push(kit.Format(i%16), kit.Format("%02X", buf[i]))
 			}
 		}
 	}

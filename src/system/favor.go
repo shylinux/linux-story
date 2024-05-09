@@ -24,15 +24,13 @@ func (s favor) Create(m *ice.Message, arg ...string) {
 }
 func (s favor) List(m *ice.Message, arg ...string) {
 	if s.Hash.List(m, arg...); len(arg) == 0 || arg[0] == "" {
-		m.PushAction(s.Zone, s.Remove).Action(s.Create, html.FILTER).Sort("zone,path")
-		m.StatusTimeCountStats(mdb.ZONE, mdb.TYPE)
+		m.PushAction(s.Zone, s.Remove).Action(s.Create, html.FILTER).StatusTimeCountStats(mdb.ZONE, mdb.TYPE).Sort("zone,path")
 	} else {
 		s.show(m, m.Append(mdb.TYPE), m.Append(nfs.PATH))
 	}
 }
 func (s favor) Zone(m *ice.Message, arg ...string) {
-	s.Hash.Modify(m, nfs.PATH, m.Option(nfs.PATH), mdb.ZONE, m.Option(mdb.ZONE))
-	m.ProcessRefresh()
+	s.Hash.Modify(m, m.OptionSimple(nfs.PATH, mdb.ZONE)...)
 }
 
 func init() { ice.CodeCtxCmd(favor{}) }

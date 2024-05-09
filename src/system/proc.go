@@ -35,7 +35,6 @@ func (s proc) List(m *ice.Message, arg ...string) {
 		return value
 	})
 	m.Action(html.FILTER).StatusTimeCountStats("USER").SortIntR("RSS")
-	// m.Options("table.checkbox", "true")
 }
 
 func init() { ice.CodeCtxCmd(proc{}) }

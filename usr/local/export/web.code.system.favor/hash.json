@@ -149,6 +149,15 @@
       "zone": "文件管理"
     }
   },
+  "3fece97c22fb198150b61fb57cd3ebc1": {
+    "meta": {
+      "name": "reboot",
+      "path": "/sbin/reboot",
+      "time": "2024-05-09 11:37:05.559",
+      "type": "sbin",
+      "zone": "系统管理"
+    }
+  },
   "40af8fe04dfb1923406a7295272ae5ad": {
     "meta": {
       "name": "grep",
@@ -471,6 +480,15 @@
       "zone": "文件管理"
     }
   },
+  "a07d5a66a97d199c6efa207a721511d2": {
+    "meta": {
+      "name": "ping",
+      "path": "/sbin/ping",
+      "time": "2024-05-09 11:36:56.210",
+      "type": "sbin",
+      "zone": "网络管理"
+    }
+  },
   "a0e58c40381ba60efb764823a511f3c2": {
     "meta": {
       "name": "sudo",
@@ -608,6 +626,24 @@
       "time": "2024-05-08 13:59:01.621",
       "type": "bin",
       "zone": "用户管理"
+    }
+  },
+  "c38b7e7cc4077e041bac981c7bdd4596": {
+    "meta": {
+      "name": "echo",
+      "path": "/bin/echo",
+      "time": "2024-05-09 11:35:39.232",
+      "type": "bin",
+      "zone": "文件管理"
+    }
+  },
+  "c46c40bb0ae4ccc17f74375ad0d21d64": {
+    "meta": {
+      "name": "halt",
+      "path": "/sbin/halt",
+      "time": "2024-05-09 11:36:33.909",
+      "type": "sbin",
+      "zone": "系统管理"
     }
   },
   "c5068b7c2b1707f8939b283a2758a691": {
