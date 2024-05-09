@@ -1,0 +1,753 @@
+{
+  "012e823173e05bdb40811fc432456697": {
+    "meta": {
+      "name": "id",
+      "path": "/bin/id",
+      "text": "用户信息",
+      "time": "2024-05-08 12:43:54.357",
+      "type": "bin",
+      "zone": "用户管理"
+    }
+  },
+  "03797d3e32d90d46724dc7640ec5032f": {
+    "meta": {
+      "/bin/chage": "zone",
+      "name": "chage",
+      "path": "/bin/chage",
+      "text": "用户期限",
+      "time": "2024-05-08 13:52:31.586",
+      "type": "bin",
+      "zone": "用户管理"
+    }
+  },
+  "0394beb2dcf86e1a44c12f05bd87b47c": {
+    "meta": {
+      "name": "groupmod",
+      "path": "/sbin/groupmod",
+      "text": "修改用户组",
+      "time": "2024-05-08 12:56:33.338",
+      "type": "sbin",
+      "zone": "用户管理"
+    }
+  },
+  "0c6e8e7c87190f0234db19ae9bf58e26": {
+    "meta": {
+      "name": "awk",
+      "path": "/bin/awk",
+      "time": "2024-05-08 17:36:08.879",
+      "type": "bin",
+      "zone": "文件管理"
+    }
+  },
+  "0f7b628cee648e987b0edb8075243322": {
+    "meta": {
+      "name": "uniq",
+      "path": "/bin/uniq",
+      "time": "2024-05-08 17:36:57.361",
+      "type": "bin",
+      "zone": "文件管理"
+    }
+  },
+  "1823044f303d0c95c0fc590e18f6eb0f": {
+    "meta": {
+      "name": "ls",
+      "path": "/bin/ls",
+      "time": "2024-05-08 17:16:33.116",
+      "type": "bin",
+      "zone": "文件管理"
+    }
+  },
+  "18a2ecec3c8268964aa5bd2b0653f647": {
+    "meta": {
+      "name": "uname",
+      "path": "/bin/uname",
+      "time": "2024-05-08 17:19:58.302",
+      "type": "bin",
+      "zone": "系统管理"
+    }
+  },
+  "1defa52ac848c2667ae30a1cd8e5096d": {
+    "meta": {
+      "name": "mv",
+      "path": "/bin/mv",
+      "time": "2024-05-08 17:15:48.068",
+      "type": "bin",
+      "zone": "文件管理"
+    }
+  },
+  "24c5439d5009071d7cfb9c37f078051c": {
+    "meta": {
+      "name": "last",
+      "path": "/bin/last",
+      "time": "2024-05-08 14:22:52.946",
+      "type": "bin",
+      "zone": "用户管理"
+    }
+  },
+  "261efe89d0ab81e42fe868afe341aa23": {
+    "meta": {
+      "name": "uptime",
+      "path": "/bin/uptime",
+      "time": "2024-05-08 18:21:18.110",
+      "type": "bin",
+      "zone": "系统管理"
+    }
+  },
+  "293f4158280a04b56fbb5ff9a4d932d2": {
+    "meta": {
+      "name": "useradd",
+      "path": "/sbin/useradd",
+      "text": "添加用户",
+      "time": "2024-05-08 11:14:49.515",
+      "type": "sbin",
+      "zone": "用户管理"
+    }
+  },
+  "2f48cbec048174535dbd4c2b964ee5b6": {
+    "meta": {
+      "name": "gunzip",
+      "path": "/bin/gunzip",
+      "time": "2024-05-08 17:40:22.258",
+      "type": "bin",
+      "zone": "文件管理"
+    }
+  },
+  "2fbb4e4143b4037b916ce4161c5595da": {
+    "meta": {
+      "name": "ln",
+      "path": "/bin/ln",
+      "time": "2024-05-08 18:17:42.421",
+      "type": "bin",
+      "zone": "文件管理"
+    }
+  },
+  "2fd45b13e1cec8c5780e8cd026d494d0": {
+    "meta": {
+      "name": "ps",
+      "path": "/bin/ps",
+      "time": "2024-05-08 17:22:28.399",
+      "type": "bin",
+      "zone": "进程管理"
+    }
+  },
+  "2fe8599cb25a0c790213d39b3be97c27": {
+    "meta": {
+      "name": "shadow",
+      "path": "/etc/shadow",
+      "text": "密码配置",
+      "time": "2024-05-08 13:00:13.916",
+      "type": "etc",
+      "zone": "用户管理"
+    }
+  },
+  "37ea712430fcfe2bbe9bf8d3aa46c4cf": {
+    "meta": {
+      "name": "find",
+      "path": "/bin/find",
+      "time": "2024-05-08 17:13:23.259",
+      "type": "bin",
+      "zone": "文件管理"
+    }
+  },
+  "40af8fe04dfb1923406a7295272ae5ad": {
+    "meta": {
+      "name": "grep",
+      "path": "/bin/grep",
+      "time": "2024-05-08 17:18:04.317",
+      "type": "bin",
+      "zone": "文件管理"
+    }
+  },
+  "42f2becabe229fee6b38c1c6eee2e561": {
+    "meta": {
+      "name": "hostname",
+      "path": "/bin/hostname",
+      "time": "2024-05-08 16:19:39.405",
+      "type": "bin",
+      "zone": "网络管理"
+    }
+  },
+  "42f948f4752326e7846585cb929bdcc7": {
+    "meta": {
+      "name": "cal",
+      "path": "/bin/cal",
+      "time": "2024-05-08 18:12:45.851",
+      "type": "bin",
+      "zone": "系统管理"
+    }
+  },
+  "447c69dd6ef072f0d67bdd9d7e8cc0c3": {
+    "meta": {
+      "name": "df",
+      "path": "/bin/df",
+      "time": "2024-05-08 17:19:26.350",
+      "type": "bin",
+      "zone": "磁盘管理"
+    }
+  },
+  "480bf1600b8b4022d679e5e9c4420db6": {
+    "meta": {
+      "name": "groupdel",
+      "path": "/sbin/groupdel",
+      "text": "删除用户组",
+      "time": "2024-05-08 12:51:58.082",
+      "type": "sbin",
+      "zone": "用户管理"
+    }
+  },
+  "4888db866b32493a19b29bf746548026": {
+    "meta": {
+      "name": "shells",
+      "path": "/etc/shells",
+      "time": "2024-05-08 15:19:48.865",
+      "type": "etc",
+      "zone": "用户管理"
+    }
+  },
+  "4aca5a6377406e4baa0f1d0a48ad7037": {
+    "meta": {
+      "name": "gzip",
+      "path": "/bin/gzip",
+      "time": "2024-05-08 17:40:10.369",
+      "type": "bin",
+      "zone": "文件管理"
+    }
+  },
+  "504ef347cf93a37d6d625721232b63fc": {
+    "meta": {
+      "name": "rmdir",
+      "path": "/bin/rmdir",
+      "time": "2024-05-08 17:15:33.283",
+      "type": "bin",
+      "zone": "文件管理"
+    }
+  },
+  "5672e21cbb4c0001b9e89912c733c053": {
+    "meta": {
+      "name": "ssh",
+      "path": "/bin/ssh",
+      "text": "远程登录",
+      "time": "2024-05-08 13:59:08.038",
+      "type": "bin",
+      "zone": "用户管理"
+    }
+  },
+  "5c5f0a43dc43d814ebad5bd7539cffbd": {
+    "meta": {
+      "name": "who",
+      "path": "/bin/who",
+      "time": "2024-05-08 13:57:54.700",
+      "type": "bin",
+      "zone": "用户管理"
+    }
+  },
+  "615835e45cef712d0f5b8a2e599d5c80": {
+    "meta": {
+      "name": "netstat",
+      "path": "/bin/netstat",
+      "time": "2024-05-08 15:54:29.849",
+      "type": "bin",
+      "zone": "网络管理"
+    }
+  },
+  "6735396982c6c90434f819847df08f37": {
+    "meta": {
+      "name": "sort",
+      "path": "/bin/sort",
+      "time": "2024-05-08 17:36:21.415",
+      "type": "bin",
+      "zone": "文件管理"
+    }
+  },
+  "6c109d6e94c97fb519007c1f06880582": {
+    "meta": {
+      "name": "sudoers",
+      "path": "/etc/sudoers",
+      "time": "2024-05-08 14:03:44.584",
+      "type": "etc",
+      "zone": "用户管理"
+    }
+  },
+  "738df7e5ab0c3d825a7d2fccefd091ec": {
+    "meta": {
+      "name": "basename",
+      "path": "/bin/basename",
+      "time": "2024-05-08 18:12:01.147",
+      "type": "bin",
+      "zone": "文件管理"
+    }
+  },
+  "75ae58d9f90b637716dd531674deca78": {
+    "meta": {
+      "name": "wc",
+      "path": "/bin/wc",
+      "time": "2024-05-08 17:38:53.952",
+      "type": "bin",
+      "zone": "文件管理"
+    }
+  },
+  "76d5aa1adc09905bee7a3fdf2bff3686": {
+    "meta": {
+      "name": "ifconfig",
+      "path": "/sbin/ifconfig",
+      "time": "2024-05-08 16:17:18.180",
+      "type": "sbin",
+      "zone": "网络管理"
+    }
+  },
+  "77b3f0b324ba7fbd35fac7b3dda52684": {
+    "meta": {
+      "name": "getent",
+      "path": "/bin/getent",
+      "text": "数据列表",
+      "time": "2024-05-08 12:50:20.543",
+      "type": "bin",
+      "zone": "用户管理"
+    }
+  },
+  "78ab9b8db89507de87d1349e54df79bb": {
+    "meta": {
+      "name": "wget",
+      "path": "/bin/wget",
+      "time": "2024-05-08 17:42:54.170",
+      "type": "bin",
+      "zone": "文件管理"
+    }
+  },
+  "7fe29f27b3bbbbb5b21ea0f9a4cde382": {
+    "meta": {
+      "name": "cat",
+      "path": "/bin/cat",
+      "time": "2024-05-08 17:14:30.556",
+      "type": "bin",
+      "zone": "文件管理"
+    }
+  },
+  "81bc787b5e502c9cb4334925fd5ccded": {
+    "meta": {
+      "name": "clear",
+      "path": "/bin/clear",
+      "time": "2024-05-08 18:13:37.323",
+      "type": "bin",
+      "zone": "系统管理"
+    }
+  },
+  "887463a9b751825b9fceaeec0d50aa7e": {
+    "meta": {
+      "name": "less",
+      "path": "/bin/less",
+      "time": "2024-05-08 17:14:18.667",
+      "type": "bin",
+      "zone": "文件管理"
+    }
+  },
+  "891c2202da7f1130da867aba67f41300": {
+    "meta": {
+      "name": "mkdir",
+      "path": "/bin/mkdir",
+      "time": "2024-05-08 17:12:46.667",
+      "type": "bin",
+      "zone": "文件管理"
+    }
+  },
+  "8a5e78434b5c8773e76f896fd9876380": {
+    "meta": {
+      "name": "shutdown",
+      "path": "/sbin/shutdown",
+      "time": "2024-05-08 17:11:22.411",
+      "type": "sbin",
+      "zone": "系统管理"
+    }
+  },
+  "8cd4f87abbd9addd26d3a8c86730f48b": {
+    "meta": {
+      "name": "group",
+      "path": "/etc/group",
+      "text": "用户组配置",
+      "time": "2024-05-08 13:01:02.950",
+      "type": "etc",
+      "zone": "用户管理"
+    }
+  },
+  "8ce15003b29b1e3877b49c7de534a186": {
+    "meta": {
+      "name": "cut",
+      "path": "/bin/cut",
+      "time": "2024-05-08 18:14:09.275",
+      "type": "bin",
+      "zone": "文件管理"
+    }
+  },
+  "8f9403ef653730ed64ffd9a481485621": {
+    "meta": {
+      "name": "free",
+      "path": "/bin/free",
+      "time": "2024-05-08 17:18:32.686",
+      "type": "bin",
+      "zone": "系统管理"
+    }
+  },
+  "901cb4fc43abf9c478698846f0f7c182": {
+    "meta": {
+      "name": "scp",
+      "path": "/bin/scp",
+      "time": "2024-05-08 17:41:39.008",
+      "type": "bin",
+      "zone": "文件管理"
+    }
+  },
+  "944a955087276103b841f9b2c948d690": {
+    "meta": {
+      "name": "sed",
+      "path": "/bin/sed",
+      "time": "2024-05-08 17:35:57.336",
+      "type": "bin",
+      "zone": "文件管理"
+    }
+  },
+  "975c0ad2bc3d6b6c99ecd87cc78144cd": {
+    "meta": {
+      "name": "du",
+      "path": "/bin/du",
+      "time": "2024-05-08 17:34:29.088",
+      "type": "bin",
+      "zone": "文件管理"
+    }
+  },
+  "97ff700f0e914d44c19779c90829f35e": {
+    "meta": {
+      "name": "visudo",
+      "path": "/sbin/visudo",
+      "text": "用户权限",
+      "time": "2024-05-08 13:55:27.708",
+      "type": "sbin",
+      "zone": "用户管理"
+    }
+  },
+  "98c9302cbd89f823a10911f777cb4334": {
+    "meta": {
+      "name": "su",
+      "path": "/bin/su",
+      "text": "切换用户",
+      "time": "2024-05-08 12:13:38.115",
+      "type": "bin",
+      "zone": "用户管理"
+    }
+  },
+  "98e3195fe90a56c6633acd3eb3458a74": {
+    "meta": {
+      "name": "passwd",
+      "path": "/bin/passwd",
+      "text": "修改密码",
+      "time": "2024-05-08 11:44:59.700",
+      "type": "bin",
+      "zone": "用户管理"
+    }
+  },
+  "9a72117105722cd43d232fbb4e9a0f3a": {
+    "meta": {
+      "name": "ping",
+      "path": "/bin/ping",
+      "time": "2024-05-08 16:20:57.680",
+      "type": "bin",
+      "zone": "网络管理"
+    }
+  },
+  "9e8edf914e5c9ed1f334743b7d0d4b9f": {
+    "meta": {
+      "name": "more",
+      "path": "/bin/more",
+      "time": "2024-05-08 17:14:03.412",
+      "type": "bin",
+      "zone": "文件管理"
+    }
+  },
+  "9fb22dbf5c345c3b537bdea3138a658b": {
+    "meta": {
+      "name": "vim",
+      "path": "/bin/vim",
+      "time": "2024-05-08 17:15:01.028",
+      "type": "bin",
+      "zone": "文件管理"
+    }
+  },
+  "a0e58c40381ba60efb764823a511f3c2": {
+    "meta": {
+      "name": "sudo",
+      "path": "/bin/sudo",
+      "text": "超级权限",
+      "time": "2024-05-08 12:14:00.410",
+      "type": "bin",
+      "zone": "用户管理"
+    }
+  },
+  "a1d5ed20ff6e7cbfa7317a23d79d92d6": {
+    "meta": {
+      "name": "curl",
+      "path": "/bin/curl",
+      "time": "2024-05-08 17:43:03.866",
+      "type": "bin",
+      "zone": "文件管理"
+    }
+  },
+  "a3f1ce7860de55cc66298d6973444fc9": {
+    "meta": {
+      "name": "vi",
+      "path": "/bin/vi",
+      "time": "2024-05-08 17:14:52.548",
+      "type": "bin",
+      "zone": "文件管理"
+    }
+  },
+  "a52f817b3cc0aa5e14b986e4f34100e0": {
+    "meta": {
+      "name": "pwd",
+      "path": "/bin/pwd",
+      "time": "2024-05-08 17:28:52.458",
+      "type": "bin",
+      "zone": "文件管理"
+    }
+  },
+  "a69c84a628c199bc14f166b95b055c4a": {
+    "meta": {
+      "name": "hostname",
+      "path": "/etc/hostname",
+      "time": "2024-05-08 16:19:31.845",
+      "type": "etc",
+      "zone": "网络管理"
+    }
+  },
+  "a7f8448f76d6f796ff2578b429618e38": {
+    "meta": {
+      "name": "top",
+      "path": "/bin/top",
+      "time": "2024-05-08 17:19:02.630",
+      "type": "bin",
+      "zone": "进程管理"
+    }
+  },
+  "aaf93093890b4534cd352446159e0a5b": {
+    "meta": {
+      "name": "cd",
+      "path": "/bin/cd",
+      "time": "2024-05-08 17:28:38.498",
+      "type": "bin",
+      "zone": "文件管理"
+    }
+  },
+  "ac2f253c90f4c88dbf7872cab97031d8": {
+    "meta": {
+      "name": "kill",
+      "path": "/bin/kill",
+      "time": "2024-05-08 17:22:42.336",
+      "type": "bin",
+      "zone": "进程管理"
+    }
+  },
+  "ad942c725cd0cae65ca4c63717ec464c": {
+    "meta": {
+      "name": "hosts",
+      "path": "/etc/hosts",
+      "time": "2024-05-08 16:19:51.413",
+      "type": "etc",
+      "zone": "网络管理"
+    }
+  },
+  "ae0296f3330740d3947b78e1f110aa3a": {
+    "meta": {
+      "name": "head",
+      "path": "/bin/head",
+      "time": "2024-05-08 17:13:38.587",
+      "type": "bin",
+      "zone": "文件管理"
+    }
+  },
+  "b1b96fbe201bf5925ded7173701297f5": {
+    "meta": {
+      "name": "userdel",
+      "path": "/sbin/userdel",
+      "text": "删除用户",
+      "time": "2024-05-08 11:19:52.294",
+      "type": "sbin",
+      "zone": "用户管理"
+    }
+  },
+  "b4abc081ea3c65806d6411e79b4b267c": {
+    "meta": {
+      "name": "groupadd",
+      "path": "/sbin/groupadd",
+      "text": "添加用户组",
+      "time": "2024-05-08 12:51:43.000",
+      "type": "sbin",
+      "zone": "用户管理"
+    }
+  },
+  "ba85d424dabc04a15a334215974ec970": {
+    "meta": {
+      "name": "tr",
+      "path": "/bin/tr",
+      "time": "2024-05-08 18:20:50.078",
+      "type": "bin",
+      "zone": "文件管理"
+    }
+  },
+  "bb9d788da211dda751296b993c438f20": {
+    "meta": {
+      "name": "ip",
+      "path": "/sbin/ip",
+      "time": "2024-05-08 16:15:59.255",
+      "type": "sbin",
+      "zone": "网络管理"
+    }
+  },
+  "c1e89c575fc1c9cf4f44109b1fe26075": {
+    "meta": {
+      "name": "ssh-keygen",
+      "path": "/bin/ssh-keygen",
+      "text": "生成密钥",
+      "time": "2024-05-08 13:59:01.621",
+      "type": "bin",
+      "zone": "用户管理"
+    }
+  },
+  "c5068b7c2b1707f8939b283a2758a691": {
+    "meta": {
+      "name": "passwd",
+      "path": "/etc/passwd",
+      "text": "用户配置",
+      "time": "2024-05-08 11:37:54.600",
+      "type": "etc",
+      "zone": "用户管理"
+    }
+  },
+  "cd745c0dd2126b3933e984db5ab799ae": {
+    "meta": {
+      "name": "touch",
+      "path": "/bin/touch",
+      "time": "2024-05-08 17:17:30.293",
+      "type": "bin",
+      "zone": "文件管理"
+    }
+  },
+  "d5ce63119021058e68006d843281acb0": {
+    "meta": {
+      "name": "usermod",
+      "path": "/sbin/usermod",
+      "text": "修改用户",
+      "time": "2024-05-08 11:20:21.957",
+      "type": "sbin",
+      "zone": "用户管理"
+    }
+  },
+  "d69345dc5a0f984a9533a5bb704d6392": {
+    "meta": {
+      "name": "date",
+      "path": "/bin/date",
+      "time": "2024-05-08 17:20:29.736",
+      "type": "bin",
+      "zone": "系统管理"
+    }
+  },
+  "d781498376118da5d697b632d87255dd": {
+    "meta": {
+      "name": "unzip",
+      "path": "/bin/unzip",
+      "time": "2024-05-08 17:40:46.481",
+      "type": "bin",
+      "zone": "文件管理"
+    }
+  },
+  "dc503987e359f3aa11bf6ff4e7916207": {
+    "meta": {
+      "name": "tar",
+      "path": "/bin/tar",
+      "time": "2024-05-08 17:39:59.749",
+      "type": "bin",
+      "zone": "文件管理"
+    }
+  },
+  "dd5c7f6be18d13193f06ea21e5dc5f39": {
+    "meta": {
+      "name": "zip",
+      "path": "/bin/zip",
+      "time": "2024-05-08 17:40:35.680",
+      "type": "bin",
+      "zone": "文件管理"
+    }
+  },
+  "de230b430419e56ff0efd536a649d05a": {
+    "meta": {
+      "name": "whoami",
+      "path": "/bin/whoami",
+      "time": "2024-05-08 13:58:00.261",
+      "type": "bin",
+      "zone": "用户管理"
+    }
+  },
+  "e423fd32b00c950551c116fdf0070c82": {
+    "meta": {
+      "name": "ssh-copy-id",
+      "path": "/bin/ssh-copy-id",
+      "text": "上传密钥",
+      "time": "2024-05-08 13:58:56.525",
+      "type": "bin",
+      "zone": "用户管理"
+    }
+  },
+  "e7403d8358d8c8618dedcabe44fe93f4": {
+    "meta": {
+      "name": "chmod",
+      "path": "/bin/chmod",
+      "text": "切换权限",
+      "time": "2024-05-08 13:03:13.231",
+      "type": "bin",
+      "zone": "用户管理"
+    }
+  },
+  "eaf3d8cf6df1ad7d9670769a0abcd04b": {
+    "meta": {
+      "name": "rm",
+      "path": "/bin/rm",
+      "time": "2024-05-08 17:15:26.116",
+      "type": "bin",
+      "zone": "文件管理"
+    }
+  },
+  "f0b96341c66fa0d1b2202f74a027bbda": {
+    "meta": {
+      "name": "resolv.conf",
+      "path": "/etc/resolv.conf",
+      "time": "2024-05-08 16:18:36.382",
+      "type": "etc",
+      "zone": "网络管理"
+    }
+  },
+  "f277a308920a490c2fc406258ff6c2d1": {
+    "meta": {
+      "name": "tail",
+      "path": "/bin/tail",
+      "time": "2024-05-08 17:13:48.266",
+      "type": "bin",
+      "zone": "文件管理"
+    }
+  },
+  "f4bf7160f283d51dc83efae495c139e3": {
+    "meta": {
+      "name": "cp",
+      "path": "/bin/cp",
+      "time": "2024-05-08 17:17:11.245",
+      "type": "bin",
+      "zone": "文件管理"
+    }
+  },
+  "f5abad0de4ac85683cf70ddcba7bc871": {
+    "meta": {
+      "name": "chown",
+      "path": "/bin/chown",
+      "text": "切换用户",
+      "time": "2024-05-08 13:02:51.272",
+      "type": "bin",
+      "zone": "用户管理"
+    }
+  }
+}
