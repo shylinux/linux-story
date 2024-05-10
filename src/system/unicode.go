@@ -9,6 +9,7 @@ import (
 
 type unicode struct {
 	ice.Hash
+	export string `data:"true"`
 	short  string `data:"begin"`
 	field  string `data:"time,begin,end"`
 	vendor string `data:"https://symbl.cc/cn/unicode-table/"`

@@ -2,8 +2,10 @@ package system
 
 import (
 	"shylinux.com/x/ice"
+	"shylinux.com/x/icebergs/base/cli"
 	"shylinux.com/x/icebergs/base/mdb"
 	"shylinux.com/x/icebergs/base/nfs"
+	"shylinux.com/x/icebergs/base/web"
 	"shylinux.com/x/icebergs/base/web/html"
 	kit "shylinux.com/x/toolkits"
 )
@@ -24,10 +26,13 @@ func (s favor) Create(m *ice.Message, arg ...string) {
 }
 func (s favor) List(m *ice.Message, arg ...string) {
 	if s.Hash.List(m, arg...); len(arg) == 0 || arg[0] == "" {
-		m.PushAction(s.Zone, s.Remove).Action(s.Create, html.FILTER).StatusTimeCountStats(mdb.ZONE, mdb.TYPE).Sort("zone,path")
+		m.PushAction(s.Show, s.Zone, s.Remove).Action(s.Create, html.FILTER).StatusTimeCountStats(mdb.ZONE, mdb.TYPE).Sort("zone,path")
 	} else {
 		s.show(m, m.Append(mdb.TYPE), m.Append(nfs.PATH))
 	}
+}
+func (s favor) Show(m *ice.Message, arg ...string) {
+	m.ProcessFloat(web.XTERM, []string{mdb.TYPE, cli.SH, mdb.TEXT, kit.JoinWord(m.Option(nfs.PATH), "--help"), nfs.PATH, kit.Path("") + nfs.PS}, arg...)
 }
 func (s favor) Zone(m *ice.Message, arg ...string) {
 	s.Hash.Modify(m, m.OptionSimple(nfs.PATH, mdb.ZONE)...)

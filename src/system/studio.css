@@ -1,5 +1,6 @@
 $action div.tabs.select { border-top:var(--box-notice3); }
 $action div.tabs.cat.select { border-top:var(--box-danger3); }
+$action div.tabs.cat>i:first-child { color:var(--danger-bg-color); }
 $project div.item.cat.select { border-right:var(--box-danger3); }
 $project div.item.cat>i:first-child { color:var(--danger-bg-color); }
 $project div.item.dir>i:first-child { color:var(--notice-bg-color); }

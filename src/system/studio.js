@@ -17,10 +17,12 @@ Volcanos(chat.ONIMPORT, {
 				{index: "web.code.system.disk", icon: "bi bi-disc"},
 				{index: "web.code.system.user", icon: "bi bi-person-gear"},
 				{index: "web.code.system.group", icon: "bi bi-people"},
-				{index: "web.code.system.favor", icon: "bi bi-star"},
+				{index: "web.code.system.favor"},
+				{index: "web.code.system.plugs"},
+				{index: "web.code.xterm", args: "sh", style: html.OUTPUT},
 				{index: "web.code.system.unicode", icon: "bi bi-sort-alpha-down"},
-				{index: "web.code.xterm", args: "sh", style: html.OUTPUT, icon: "bi bi-terminal"},
 			], function(value) { value.nick = value.nick||value.index.split(".").pop()
+				value.icon = value.icon||icon[value.nick]
 				value._select = can.db.hash[0] == value.index
 				return value
 			}), function(event, item, show, target) {
@@ -32,8 +34,8 @@ Volcanos(chat.ONIMPORT, {
 	_project: function(can, msg, target) {
 		can.onimport.itemlist(can, msg.Table(function(value) { value.icon = can.base.endWith(value.path, nfs.PS)? icon.path: icon.file
 			value.nick = can.core.Split(value.path, nfs.PS).pop()+` <span style="color:var(--disable-fg-color)">(${value.size})</span>`
-				+(can.db.plugs[value.path]? " <span style='color:blue'>●</span>": "")
 				+(can.db.favor[value.path]? " <span style='color:red'>●</span>": "")
+				+(can.db.plugs[value.path]? " <span style='color:blue'>●</span>": "")
 			value._select = (can.db.hash[0]||"").indexOf(value.path) == 0
 			return value
 		}), function(event, value, show, target) {
