@@ -19,7 +19,7 @@ Volcanos(chat.ONIMPORT, {
 				{index: "web.code.system.group", icon: "bi bi-people"},
 				{index: "web.code.system.favor"},
 				{index: "web.code.system.plugs"},
-				{index: "web.code.xterm", args: "sh", style: html.OUTPUT},
+				{index: "web.code.xterm", args: "sh", style: html.OUTPUT, nick: "shell"},
 				{index: "web.code.system.unicode", icon: "bi bi-sort-alpha-down"},
 			], function(value) { value.nick = value.nick||value.index.split(".").pop()
 				value.icon = value.icon||icon[value.nick]
