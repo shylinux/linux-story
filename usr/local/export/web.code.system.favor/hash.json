@@ -48,6 +48,15 @@
       "zone": "文件管理"
     }
   },
+  "121c1ec5366554bb3e9f1f5ef06d1942": {
+    "meta": {
+      "name": "which",
+      "path": "/bin/which",
+      "time": "2024-05-10 10:38:40.604",
+      "type": "bin",
+      "zone": "终端脚本"
+    }
+  },
   "1823044f303d0c95c0fc590e18f6eb0f": {
     "meta": {
       "name": "ls",
@@ -341,6 +350,24 @@
       "zone": "系统管理"
     }
   },
+  "83f4a1cefd1c7cb21e72045eb25c914b": {
+    "meta": {
+      "name": "true",
+      "path": "/bin/true",
+      "time": "2024-05-10 10:38:12.691",
+      "type": "bin",
+      "zone": "终端脚本"
+    }
+  },
+  "8665cfeecc6c3fc420e16628e5556585": {
+    "meta": {
+      "name": "ifup",
+      "path": "/sbin/ifup",
+      "time": "2024-05-10 10:42:02.182",
+      "type": "sbin",
+      "zone": "网络管理"
+    }
+  },
   "887463a9b751825b9fceaeec0d50aa7e": {
     "meta": {
       "name": "less",
@@ -508,6 +535,15 @@
       "zone": "文件管理"
     }
   },
+  "a3ed8be9ac1ed584911f0e6cb0c6b933": {
+    "meta": {
+      "name": "chgrp",
+      "path": "/bin/chgrp",
+      "time": "2024-05-10 10:35:39.994",
+      "type": "bin",
+      "zone": "文件管理"
+    }
+  },
   "a3f1ce7860de55cc66298d6973444fc9": {
     "meta": {
       "name": "vi",
@@ -580,6 +616,15 @@
       "zone": "文件管理"
     }
   },
+  "b1b35fba57a8530329f545ac0a10b66d": {
+    "meta": {
+      "name": "sleep",
+      "path": "/bin/sleep",
+      "time": "2024-05-10 10:37:58.510",
+      "type": "bin",
+      "zone": "终端脚本"
+    }
+  },
   "b1b96fbe201bf5925ded7173701297f5": {
     "meta": {
       "name": "userdel",
@@ -615,6 +660,15 @@
       "path": "/sbin/ip",
       "time": "2024-05-08 16:15:59.255",
       "type": "sbin",
+      "zone": "网络管理"
+    }
+  },
+  "c1604c2788c906229d337350828989d8": {
+    "meta": {
+      "name": "ip",
+      "path": "/bin/ip",
+      "time": "2024-05-10 10:36:18.386",
+      "type": "bin",
       "zone": "网络管理"
     }
   },
@@ -663,6 +717,15 @@
       "time": "2024-05-08 17:17:30.293",
       "type": "bin",
       "zone": "文件管理"
+    }
+  },
+  "d2f62ba4768a58bfd4ff80cbfef24721": {
+    "meta": {
+      "name": "hwclock",
+      "path": "/sbin/hwclock",
+      "time": "2024-05-10 10:41:43.213",
+      "type": "sbin",
+      "zone": "系统管理"
     }
   },
   "d5ce63119021058e68006d843281acb0": {
@@ -720,6 +783,15 @@
       "zone": "用户管理"
     }
   },
+  "df2d4e6ff19874ace611fe220f83afea": {
+    "meta": {
+      "name": "ifdown",
+      "path": "/sbin/ifdown",
+      "time": "2024-05-10 10:41:54.437",
+      "type": "sbin",
+      "zone": "网络管理"
+    }
+  },
   "e423fd32b00c950551c116fdf0070c82": {
     "meta": {
       "name": "ssh-copy-id",
@@ -765,6 +837,15 @@
       "time": "2024-05-08 17:13:48.266",
       "type": "bin",
       "zone": "文件管理"
+    }
+  },
+  "f34b5c20cf48ee884fdcf8ad586b1a70": {
+    "meta": {
+      "name": "false",
+      "path": "/bin/false",
+      "time": "2024-05-10 10:36:48.866",
+      "type": "bin",
+      "zone": "终端脚本"
     }
   },
   "f4bf7160f283d51dc83efae495c139e3": {
