@@ -28,6 +28,12 @@ func (s dir) List(m *ice.Message, arg ...string) {
 		m.Cmdy(nfs.DIR, kit.Select(nfs.PS, arg, 0), "time,path,type,size").PushAction(s.Trash).Action(s.Upload).Sort(nfs.PATH)
 	} else if html.IsImage(arg[0], "") {
 		m.Echo(`<img src="data:image/%s;base64,%s" title='%s' />`, kit.Ext(arg[0]), base64.StdEncoding.EncodeToString([]byte(m.Cmdx(nfs.CAT, arg[0]))), arg[0])
+	} else if msg := m.Cmd(plugs{}, arg[0]); msg.Length() > 0 {
+		s.cmds(m, msg.Append(ctx.INDEX), kit.Split(msg.Append(ctx.ARGS))...)
+		m.RewriteAppend(func(value, key string, index int) string {
+			kit.If(key == html.STYLE, func() { value = "" })
+			return value
+		})
 	} else if kit.HasPrefix(arg[0], "/etc/", "/proc/") || nfs.IsSourceFile(m.Message, kit.Ext(arg[0])) {
 		s.cmds(m, web.CODE_VIMER, path.Dir(arg[0]), path.Base(arg[0]))
 	} else if s.cmds(m, hex{}, arg...); kit.HasPrefix(arg[0], "/bin/", "/sbin/", "/usr/bin/", "/usr/sbin/", "/usr/local/bin", "/usr/local/sbin") {
