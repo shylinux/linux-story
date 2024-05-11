@@ -27,7 +27,7 @@ func (s service) List(m *ice.Message, arg ...string) {
 			m.Push(head[3], ls[3])
 			m.Push(head[4], kit.JoinWord(ls[4:]...))
 		}
-		m.ActionFilter().StatusTimeCountStats("LOAD", "ACTIVE", "SUB").SortStrR("SUB")
+		m.StatusTimeCountStats("LOAD", "ACTIVE", "SUB").SortStrR("SUB")
 	} else {
 		kit.For(kit.SplitLine(m.SystemCmdx("systemctl", "show", arg[0])), func(text string) {
 			m.Push("name,value", strings.SplitN(text, "=", 2))

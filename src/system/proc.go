@@ -6,7 +6,6 @@ import (
 
 	"shylinux.com/x/ice"
 	"shylinux.com/x/icebergs/base/cli"
-	"shylinux.com/x/icebergs/base/web/html"
 	kit "shylinux.com/x/toolkits"
 )
 
@@ -43,7 +42,7 @@ func (s proc) List(m *ice.Message, arg ...string) {
 		}
 		return value
 	})
-	m.Action(html.FILTER).StatusTimeCountStats("USER").SortIntR("RSS")
+	m.StatusTimeCountStats("USER").SortIntR("RSS")
 }
 
 func init() { ice.CodeCtxCmd(proc{}) }

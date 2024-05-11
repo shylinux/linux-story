@@ -45,7 +45,7 @@ func (s user) List(m *ice.Message, arg ...string) {
 			}
 		}
 	})
-	m.ActionFilter(s.Create).SortIntR(UID)
+	m.SortIntR(UID)
 }
 
 func init() { ice.CodeCtxCmd(user{}) }

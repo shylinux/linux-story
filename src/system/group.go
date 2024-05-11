@@ -35,7 +35,7 @@ func (s group) List(m *ice.Message, arg ...string) {
 			}
 		}
 	})
-	m.ActionFilter(s.Create).SortIntR(GID)
+	m.SortIntR(GID)
 }
 
 func init() { ice.CodeCtxCmd(group{}) }

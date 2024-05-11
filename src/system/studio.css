@@ -4,6 +4,10 @@ $action div.tabs.cat>i:first-child { color:var(--danger-bg-color); }
 $project div.item.cat.select { border-right:var(--box-danger3); }
 $project div.item.cat>i:first-child { color:var(--danger-bg-color); }
 $project div.item.dir>i:first-child { color:var(--notice-bg-color); }
+$project div.item>span { margin-right:var(--input-margin); }
+$project div.item>span.size { color:var(--disable-fg-color); }
+$project div.item>span.favor { color:var(--danger-bg-color); }
+$project div.item>span.plugs { color:var(--notice-bg-color); }
 $content img { max-height:100%; max-width:100%; }
 $content>fieldset.story>form.option>div.icon.delete { display:none; }
 $content>fieldset.story>div.action>div.item.state.button.full.icons { display:none; }

@@ -1,4 +1,5 @@
 {
+	"whois": "地理位置",
 	"port": "端口",
 	"proc": "进程",
 	"disk": "磁盘",
@@ -6,7 +7,7 @@
 	"group": "用户组",
 	"favor": "收藏",
 	"plugs": "插件",
-	"whois": "地理位置",
+	"tools": "工具",
 	"unicode": "字符编码",
 	"service": "服务",
 	"yum": "软件包",
