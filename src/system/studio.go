@@ -8,7 +8,7 @@ import (
 )
 
 type studio struct {
-	dir    dir
+	_dir   dir
 	_favor favor
 	_plugs plugs
 	online string `data:"true"`
@@ -32,7 +32,7 @@ func (s studio) Favor(m *ice.Message, arg ...string) {
 	m.Cmdy(s._favor, s._favor.Create, m.OptionSimple("path,type,name,text")).ProcessHold()
 }
 func (s studio) List(m *ice.Message, arg ...string) {
-	if m.Cmdy(dir{}, arg).PushAction(s.Plugs, s.Favor, s.dir.Upload, s.dir.Trash).Action(); len(arg) == 0 {
+	if m.Cmdy(s._dir, arg).PushAction(s.Plugs, s.Favor, s._dir.Upload, s._dir.Trash).Action(); len(arg) == 0 {
 		m.Display("").DisplayCSS("")
 		kit.If(m.Config(ctx.TOOLS) == "", func() { m.Toolkit(favor{}, plugs{}, tools{}) })
 		m.StatusTimeCount(nfs.VERSION, m.SystemCmdx("uname", "-sr"))
