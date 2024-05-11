@@ -1,0 +1,101 @@
+{
+  "1cc2a5cc057f11cd15fbb7946b2bdb88": {
+    "meta": {
+      "enable": "true",
+      "icon": "bi bi-alphabet",
+      "index": "web.code.system.unicode",
+      "order": "10",
+      "time": "2024-05-11 15:15:00.542"
+    }
+  },
+  "20048507d2b0076680caa2610b2c69e9": {
+    "meta": {
+      "enable": "true",
+      "icon": "bi bi-person-gear",
+      "index": "web.code.system.user",
+      "order": "5",
+      "time": "2024-05-11 15:12:41.403"
+    }
+  },
+  "3aed8632787d9545015ef2364c2e84c4": {
+    "meta": {
+      "enable": "true",
+      "index": "web.code.system.favor",
+      "order": "7",
+      "time": "2024-05-11 15:42:46.349"
+    }
+  },
+  "3c15095d30ef949445038ab06e35ff9d": {
+    "meta": {
+      "enable": "true",
+      "icon": "bi bi-pin-map",
+      "index": "web.code.system.whois",
+      "order": "1",
+      "time": "2024-05-11 14:55:37.651"
+    }
+  },
+  "4f7709daa634fd1af96bad1268064107": {
+    "meta": {
+      "enable": "true",
+      "icon": "bi bi-box",
+      "index": "web.code.system.proc",
+      "order": "3",
+      "time": "2024-05-11 15:11:50.962"
+    }
+  },
+  "5293ac0f227e27770b988c3f09445a3e": {
+    "meta": {
+      "enable": "true",
+      "index": "web.code.system.plugs",
+      "order": "8",
+      "time": "2024-05-11 15:13:59.747"
+    }
+  },
+  "573388b32f3d32e9cbcc05a68bc72a2f": {
+    "meta": {
+      "args": "sh",
+      "enable": "true",
+      "index": "web.code.xterm",
+      "nick": "shell",
+      "order": "11",
+      "style": "output",
+      "time": "2024-05-11 15:14:22.084"
+    }
+  },
+  "61274e0b9cede7cf9fdbded3f96e7ddf": {
+    "meta": {
+      "enable": "true",
+      "icon": "bi bi-people",
+      "index": "web.code.system.group",
+      "order": "6",
+      "time": "2024-05-11 15:13:19.947"
+    }
+  },
+  "a15f0542db1e90fcf7285f38c002b518": {
+    "meta": {
+      "enable": "true",
+      "icon": "bi bi-grid",
+      "index": "web.code.system.tools",
+      "order": "9",
+      "time": "2024-05-11 16:11:42.028"
+    }
+  },
+  "a3d54f4e82142ebd473b0d477d68161a": {
+    "meta": {
+      "enable": "true",
+      "icon": "bi bi-bricks",
+      "index": "web.code.system.port",
+      "order": "2",
+      "time": "2024-05-11 15:11:35.235"
+    }
+  },
+  "ab849cbbd11ea8aa90658130b9bd5597": {
+    "meta": {
+      "enable": "true",
+      "icon": "bi bi-disc",
+      "index": "web.code.system.disk",
+      "order": "4",
+      "time": "2024-05-11 15:12:25.819"
+    }
+  }
+}
