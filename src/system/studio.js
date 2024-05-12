@@ -10,7 +10,7 @@ Volcanos(chat.ONIMPORT, {
 		})
 	},
 	_toolkit: function(can, msg) {
-		can.onimport.item(can, {icon: "bi bi-grid", nick: "tookits", _select: can.db.hash[0].indexOf("/") == -1}, function(event, item, show, target) {
+		can.onimport.item(can, {icon: "bi bi-grid", nick: "tookits", _select: (can.db.hash[0]||"").indexOf("/") == -1}, function(event, item, show, target) {
 			show == undefined && can.onimport.itemlist(can, msg.Table(function(value) { if (value.enable != ice.TRUE) { return }
 				value.nick = value.nick||value.index.split(".").pop(), value.icon = value.icon||icon[value.nick]
 				value._select = can.db.hash[0] == value.index
