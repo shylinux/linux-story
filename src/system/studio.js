@@ -1,5 +1,5 @@
 Volcanos(chat.ONIMPORT, {
-	_init: function(can, msg, cb) {
+	_init: function(can, msg, cb) { can.onmotion.hidden(can, can._status)
 		can.db.favor = {}, can.run({}, [ctx.RUN, "web.code.system.favor"], function(_msg) { _msg.Table(function(value) { can.db.favor[value.path] = value })
 			can.db.plugs = {}, can.run({}, [ctx.RUN, "web.code.system.plugs"], function(_msg) { _msg.Table(function(value) { can.db.plugs[value.path] = value })
 				can.db.tools = {}, can.run({}, [ctx.RUN, "web.code.system.tools"], function(_msg) {
@@ -37,5 +37,5 @@ Volcanos(chat.ONIMPORT, {
 			})
 		}, function() {}, target)
 	},
-	_content: function(can, msg, value, target) { can.onimport.tabsCache(can, msg, value.path||value.index, value, target) },
+	_content: function(can, msg, value, target) { can.onimport.tabsCache(can, value, target, msg) },
 })
