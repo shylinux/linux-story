@@ -4,6 +4,7 @@ import (
 	"shylinux.com/x/ice"
 	"shylinux.com/x/icebergs/base/ctx"
 	"shylinux.com/x/icebergs/base/nfs"
+	"shylinux.com/x/icebergs/base/web"
 	kit "shylinux.com/x/toolkits"
 )
 
@@ -17,6 +18,11 @@ type studio struct {
 	list   string `name:"list refresh" icon:"studio.png"`
 }
 
+func (s studio) Init(m *ice.Message, arg ...string) {
+	web.AddPortalProduct(m.Message, "System Studio", `
+一款网页版的系统工作台，有文件管理、用户管理、进程管理等功能。
+`, 10.0)
+}
 func (s studio) Inputs(m *ice.Message, arg ...string) {
 	switch m.Option(ctx.ACTION) {
 	case kit.FuncName(s.Plugs):
