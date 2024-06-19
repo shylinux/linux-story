@@ -12,6 +12,7 @@ type unicode struct {
 	export string `data:"true"`
 	short  string `data:"begin"`
 	field  string `data:"time,begin,end"`
+	create string `name:"create begin* end*"`
 	vendor string `data:"https://symbl.cc/cn/unicode-table/"`
 	list   string `name:"list begin auto"`
 }
