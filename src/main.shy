@@ -1,4 +1,4 @@
-title "linux"
+title "Linux"
 source idc/idc.shy
 source iso/iso.shy
 chapter "cloud"
